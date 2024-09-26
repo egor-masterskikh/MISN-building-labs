@@ -177,7 +177,7 @@ $\dfrac{f_\text{d}}{f_\text{0}} = 2^n$, где $n \in \mathbb{N}$
 ## Задание 3: проанализировать треугольный и прямоугольный сигналы с произвольными характеристиками в частотной и временной областях
 
 <figure style="width: 50%;">
-  <img src="images/task3/task3_sheme.svg">
+  <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task3/task3_sheme.svg">
   <figcaption>
     Схема подключения блоков для анализа прямоугольного и треугольного сигналов
   </figcaption>
@@ -215,11 +215,11 @@ $\dfrac{f_\text{d}}{f_\text{0}} = 2^n$, где $n \in \mathbb{N}$
 <table class="columns">
   <tr>
     <td>
-      <img src="images/task3/task3_time.png"/>
+      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task3/task3_time.png"/>
       Временная диаграмма прямоугольного и треугольного сигналов. По диаграмме $T = 1\ \text{ms}$
     </td>
     <td width="60%">
-      <img src="images/task3/task3_freq.png"/>
+      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task3/task3_freq.png"/>
       Частотная диаграмма прямоугольного сигнала. По диаграмме $f = 1\ \text{kHz}$
     </td>
   </tr>
