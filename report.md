@@ -23,7 +23,10 @@
 
   figure {
     display: table;
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 1em;
   }
 
   figure img, figcaption {
@@ -171,89 +174,57 @@ $\dfrac{f_\text{d}}{f_\text{0}} = 2^n$, где $n \in \mathbb{N}$
 - $A^\prime = k_\text{m}A^2$;
 - $f_0^\prime \ne f_0^\prime(k_\text{m})$ ($f_0^\prime$ не зависит от $k_\text{m}$)
 
-## Задание 3: изучить поведение треугольного и прямоугольного сигналов с произвольными характеристиками в частотной и временной областях
-
-Пусть $f_\text{d} = 512\ \text{kHz}$ ($f_\text{d}$ — частота дискретизации и для прямоугольного, и для треугольного сигнала).
-
-### Параметры прямоугольного сигнала
-
-Пусть:
-
-- $f_\text{p} = 1\ \text{kHz}$ ($f_\text{p}$ — частота прямоугольного сигнала);
-- $w_\text{p} = \frac{T_\text{p}}{4}$ ($w_\text{p}$ — ширина импульса);
-
-Соответствующая конфигурация блока *Pulse Generator*:
-
-| | |
-| -- | -- |
-| Pulse type | Sample based |
-| Sample time | 1/512000 |
-| Period (number of samples) | 512 |
-| Pulse width (number of samples) | 128 |
-
-### Параметры треугольного сигнала
-
-Пусть частота треугольного сигнала $f_\text{t} = 2\ \text{kHz}$.
-
-Соответствующая конфигурация блока *Triangle Generator*:
-
-| | |
-| --- | --- |
-| Sample time | 1/512000 |
-| Frequency (Hz) | 2000 |
-
-### Временной анализ прямоугольного и треугольного сигналов
-
-<table class="columns">
-  <tr>
-    <td>
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/4fee40c85f4c5be91096a3c488105ed9415cc6f6/images/task3/task3_time_diagram.svg"/>
-      Схема подключения блоков для временного анализа прямоугольного и треугольного сигналов
-    </td>
-    <td>
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task3/task3_time.png"/>
-      Временная диаграмма прямоугольного и треугольного сигналов. По диаграмме $T_\text{p} = 1\ \text{ms}$; $T_\text{t} = 0,5\ \text{ms}$
-    </td>
-  </tr>
-</table>
-
-### Частотный анализ прямоугольного сигнала
-
-<table class="columns">
-  <tr>
-    <td width="55%">
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/4fee40c85f4c5be91096a3c488105ed9415cc6f6/images/task3/task3_rect_freq_diagram.svg"/>
-      Схема подключения блоков для частотного анализа прямоугольного сигнала
-    </td>
-    <td>
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task3/task3_rect_freq.png"/>
-      Частотная диаграмма прямоугольного сигнала. По диаграмме $f_\text{p} = 1\ \text{kHz}$, последующие пики соответствуют гармоникам
-    </td>
-  </tr>
-</table>
-
-### Частотный анализ треугольного сигнала
+## Задание 3: проанализировать треугольный и прямоугольный сигналы с произвольными характеристиками в частотной и временной областях
 
 <figure style="width: 50%;">
-  <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/4fee40c85f4c5be91096a3c488105ed9415cc6f6/images/task3/task3_tri_freq_diagram.svg">
+  <img src="images/task3/task3_sheme.svg">
   <figcaption>
-    Схема подключения блоков для частотного анализа треугольного сигнала
+    Схема подключения блоков для анализа прямоугольного и треугольного сигналов
   </figcaption>
 </figure>
 
+Пусть:
+
+- $f_\text{d} = 512\ \text{kHz}$ (частота дискретизации, одинаковая для обоих сигналов);
+- $f = 1\ \text{kHz}$ (частота сигналов, одинаковая для обоих);
+- $w_\text{p} = \frac{T}{4} = \frac{1}{4f}$ (ширина прямоугольного импульса).
+
+Создадим соответствующие переменные:
+
+| | |
+| -- | -- |
+| SampleFreq | 512e3 |
+| SigFreq | 1e3 |
+
+и зададим конфигурацию блоков:
+
+| *Pulse Generator* | |
+| -- | -- |
+| Pulse type | Sample based |
+| Sample time | 1 / SampleFreq |
+| Period (number of samples) | SampleFreq / SigFreq |
+| Pulse width (number of samples) | SampleFreq / (4 * SigFreq) |
+
+| *Triangle Generator* | |
+| -- | -- |
+| Sample time | 1 / SampleFreq |
+| Frequency (Hz) | SigFreq |
+
+### Анализ прямоугольного и треугольного сигналов
+
 <table class="columns">
-  <tr valign="top">
-    <td width="50%">
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task3/task3_tri_freq.png"/>
-      Частотная диаграмма треугольного сигнала. По диаграмме $f_\text{t} = 2\ \text{kHz}$, последующие пики соответствуют гармоникам
-    </td>
+  <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task3/task3_tri_harms.png"/>
-      Частотная диаграмма треугольного сигнала с бо́льшим количеством гармоник
+      <img src="images/task3/task3_time.png"/>
+      Временная диаграмма прямоугольного и треугольного сигналов. По диаграмме $T = 1\ \text{ms}$
+    </td>
+    <td width="60%">
+      <img src="images/task3/task3_freq.png"/>
+      Частотная диаграмма прямоугольного сигнала. По диаграмме $f = 1\ \text{kHz}$
     </td>
   </tr>
 </table>
 
 ### Выводы к заданию 3
 
-Ввиду того, что прямоугольный и треугольный сигналы не являются гармоническими, на их частотных диаграммах присутствуют гармоники. Частоте сигнала соответствует самый высокий пик (наибольшая мощность) на частотной диаграмме.
+# TODO
