@@ -32,82 +32,131 @@
   figure img, figcaption {
     display: table-row;
   }
+
+  h1, h2, h3 {
+    hyphens: none;
+  }
+
+  :is(#titlepage) :is(h1, h2, h3, h4) {
+    text-align: center;
+    font-weight: normal;
+  }
+
+  :is(#titlepage) :is(h4) {
+    text-align: right;
+  }
+
+  #titlepage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 27cm;
+  }
+
+  body {
+    padding: 0;
+  }
 </style>
 
-## Основы построения многоканальных инфокоммуникационных систем и сетей
+<div id="titlepage">
+  <div>
+  <h3>
+    Балтийский Федеральный Университет им. Иммануила Канта
+  </h3>
 
-# Отчёт по ЛР №1
+  <h2>
+    Основы построения многоканальных инфокоммуникационных систем и сетей
+  </h2>
 
-Выполнил Мастерских Егор, студент группы ИБ-3
+  <h1>
+    Отчёт по лабораторной работе №1
+  </h1>
 
-## Задание 1: проанализировать синусоидальный сигнал в частотной и временной областях при частотах дискретизации $f_\text{d}$: по условию теоремы Котельникова и при передискретизации с коэффициентами $10$ и $100$
+  <h2>
+    Исследование временно-частотных характеристик сигналов разной формы и амплитудно-модулированных сигналов
+  </h2>
+
+  </br>
+
+  <h4>
+    Выполнил студент 3-го курса</br>
+    направления «Информационная безопасность»</br>
+    Мастерских Егор Александрович
+  </h4>
+
+  <h4>
+    Преподаватель:</br>
+    Молчанов Сергей Васильевич
+  </h4>
+  </div>
+
+  <h3 id="footer">
+    Калининград 2024
+  </h3>
+</div>
+
+<div style="page-break-after: always;"></div>
+
+## Задание 1. Проанализировать синусоидальный сигнал в частотной и временной областях при частоте дискретизации, соответствующей условию теоремы Котельникова, и при передискретизации с коэффициентами 10 и 100
 
 <figure style="width: 50%;">
-  <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/4fee40c85f4c5be91096a3c488105ed9415cc6f6/images/task1/task1_diagram.svg"/>
+  <img src="images/task1/task1_diagram.svg" alt=""/>
   <figcaption>
     Схема подключения блоков для анализа синусоидального сигнала
   </figcaption>
 </figure>
 
-Пусть $f_0 = 100\ \text{Hz}$ ($f_0$ — частота сигнала; ей соответствует параметр *Frequency* блока *Sine Wave*).
+Пусть $f = 100\ \text{Hz}$ (частота сигнала; ей соответствует параметр *Frequency* блока *Sine Wave*).
 
-### Анализ сигнала при $f_{\text{d}0} = 1\ \text{kHz}$
+### Анализ сигнала при $f_\mathrm{d0} = 1\ \text{kHz}$
 
-Частота дискретизации $f_{\text{d}0}$ удовлетворяет условию теоремы Котельникова: $f_{\text{d}0} > 2f_0$
+$f_\mathrm{d0} > 2f \Longrightarrow f_\mathrm{d0}$ удовлетворяет условию теоремы Котельникова.
 
-Установим значение параметра *Sample time* блока *Sine Wave* равным $\frac{1}{f_{\text{d}0}} = 1 \ \text{ms}$:
+Величине, обратной частоте дискретизации синусоидального сигнала, соответствует параметр *Sample time* блока *Sine Wave*:
 
 | | |
 | -- | -- |
-| Sample time | 1/1000 |
+| Sample time | 1 / 1e3 |
 
 <table class="columns">
   <tr>
     <td width="55%">
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task1/task1_fd1k_time.png"/>
-      Временная диаграмма синусоидального сигнала при $f_{\text{d}0}$. По диаграмме период сигнала $T = 0,01\ \text{s}$
+      <img src="images/task1/task1_fd1k_time.png" alt=""/>
+      Временная диаграмма синусоидального сигнала при $f_\mathrm{d} = 1\ \text{kHz}$. По диаграмме период сигнала $T = 0,01\ \text{s}$
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task1/task1_fd1k_freq.png"/>
-      Частотная диаграмма синусоидального сигнала при $f_{\text{d}0}$. По диаграмме $f_0 = 100\ \text{Hz}$
+      <img src="images/task1/task1_fd1k_freq.png" alt=""/>
+      Частотная диаграмма синусоидального сигнала при $f_\mathrm{d0}$. По диаграмме $f = 100\ \text{Hz}$
     </td>
   </tr>
 </table>
 
-### Анализ сигнала при $f_{\text{d}1} = 10f_{\text{d}0} = 10\ \text{kHz}$
-
-| | |
-| -- | -- |
-| Sample time | 1/10000 |
+### Анализ сигнала при $f_\mathrm{d1} = 10f_\mathrm{d0}$
 
 <table class="columns">
   <tr>
     <td width="55%">
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task1/task1_fd10k_time.png"/>
-      Временная диаграмма синусоидального сигнала при $f_{\text{d}1}$.
+      <img src="images/task1/task1_fd10k_time.png" alt=""/>
+      Временная диаграмма синусоидального сигнала при $f_\mathrm{d} = 10\ \text{kHz}$
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task1/task1_fd10k_freq.png"/>
-      Частотная диаграмма синусоидального сигнала при $f_{\text{d}1}$.
+      <img src="images/task1/task1_fd10k_freq.png" alt=""/>
+      Частотная диаграмма синусоидального сигнала при $f_\mathrm{d} = 10\ \text{kHz}$
     </td>
   </tr>
 </table>
 
-### Анализ сигнала при $f_{\text{d}2} = 100\ \text{kHz}$
-
-| | |
-| -- | -- |
-| Sample time | 1/100000 |
+### Анализ сигнала при $f_\mathrm{d2} = 100 f_\mathrm{d0}$
 
 <table class="columns">
   <tr>
     <td width="55%">
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task1/task1_fd100k_time.png"/>
-      Временная диаграмма синусоидального сигнала при $f_{\text{d}2}$.
+      <img src="images/task1/task1_fd100k_time.png" alt=""/>
+      Временная диаграмма синусоидального сигнала при $f_\mathrm{d} = 100\ \text{kHz}$
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task1/task1_fd100k_freq.png"/>
-      Частотная диаграмма синусоидального сигнала при $f_{\text{d}2}$.
+      <img src="images/task1/task1_fd100k_freq.png" alt=""/>
+      Частотная диаграмма синусоидального сигнала при $f_\mathrm{d} = 100\ \text{kHz}$
     </td>
   </tr>
 </table>
@@ -115,69 +164,71 @@
 ### Выводы к заданию 1
 
 - Чем выше частота дискретизации, тем ближе дискретный синусоидальный сигнал к своему аналоговому прототипу;
-- $f_0 \ne f_0(f_\text{d})$ (изменение частоты дискретизации синусоидального сигнала не влияет на частоту этого сигнала);
-- С каждым десятикратным увеличением $f_\text{d}$ пик основной частоты ($f_0$) на частотной диаграмме становится всё менее выраженным.
+- С каждым десятикратным увеличением $f_\mathrm{d}$ пик основной частоты $f$ на частотной диаграмме становится всё менее выраженным.
 
-### О выборе значений частоты дискретизации ($f_\text{d}$) и частоты сигнала ($f_0$)
+### О выборе значений частоты дискретизации $f_\mathrm{d}$ и частоты сигнала $f$
 
 Наилучший результат от преобразования Фурье получается в случае, если:
 
-$\dfrac{f_\text{d}}{f_\text{0}} = 2^n$, где $n \in \mathbb{N}$
+$\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
 
-## Задание 2: продемонстрировать умножение двух идентичных синусоидальных сигналов с частотой $f_0 = 1\ \text{kHz}$ при двух значениях коэффициента модуляции $k_\text{m}$
+## Задание 2. Проанализировать умножение двух идентичных синусоидальных сигналов с частотой $f = 1\ \text{kHz}$ при двух значениях коэффициента модуляции $k_\mathrm{m}$
 
 <figure style="width: 75%;">
-  <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/4fee40c85f4c5be91096a3c488105ed9415cc6f6/images/task2/task2_diagram.svg"/>
+  <img src="images/task2/task2_diagram.svg" alt=""/>
   <figcaption>
     Схема подключения блоков для анализа операции умножения двух идентичных синусоидальных сигналов и коэффициента модуляции
   </figcaption>
 </figure>
 
-Пусть $A = 1$, $f_\text{d} = 128\ \text{kHz}$, где:
+Пусть:
 
-- $A$ — амплитуда генерируемого источником сигнала;
-- $f_\text{d}$ — частота дискретизации.
+- $A = 1$ (амплитуда генерируемого источником сигнала);
+- $f_\mathrm{d} = 128\ \text{kHz}$ (частота дискретизации).
 
-### Анализ результирующего сигнала при $k_\text{m} = 2$
+### Анализ результирующего сигнала при $k_\mathrm{m} = 2$
 
 <table class="columns">
   <tr>
     <td width="55%">
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task2/task2_k2_time.png"/>
-      Временная диаграмма результирующего сигнала при $k_\text{m} = 2$. По диаграмме период результирующего сигнала $T^\prime = 0,5\ \text{ms}$; амплитуда результирующего сигнала $A^\prime = 2$
+      <img src="images/task2/task2_k2_time.png" alt=""/>
+      Временная диаграмма результирующего сигнала при $k_\mathrm{m} = 2$.</br>
+      По диаграмме период результирующего сигнала $T^\prime = 0,5\ \text{ms}$; амплитуда результирующего сигнала $A^\prime = 2$
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task2/task2_k2_freq.png"/>
-      Частотная диаграмма результирующего сигнала при $k_\text{m} = 2$. По диаграмме частота результирующего сигнала $f_0^\prime = 2\ \text{kHz}$
+      <img src="images/task2/task2_k2_freq.png" alt=""/>
+      Частотная диаграмма результирующего сигнала при $k_\mathrm{m} = 2$.</br>
+      По диаграмме частота результирующего сигнала $f^\prime = 2\ \text{kHz}$
     </td>
   </tr>
 </table>
 
-### Анализ результирующего сигнала при $k_\text{m} = 3$
+### Анализ результирующего сигнала при $k_\mathrm{m} = 3$
 
 <table class="columns">
   <tr>
     <td width="55%">
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task2/task2_k3_time.png"/>
-      Временная диаграмма результирующего сигнала при $k_\text{m} = 3$. По диаграмме $T^\prime = 0,5\ \text{ms}$, $A^\prime = 3$
+      <img src="images/task2/task2_k3_time.png" alt=""/>
+      Временная диаграмма результирующего сигнала при $k_\mathrm{m} = 3$.</br>
+      По диаграмме $T^\prime = 0,5\ \text{ms}$, $A^\prime = 3$
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task2/task2_k3_freq.png"/>
-      Частотная диаграмма результирующего сигнала при $k_\text{m} = 3$. По диаграмме $f_0^\prime = 2\ \text{kHz}$
+      <img src="images/task2/task2_k3_freq.png" alt=""/>
+      Частотная диаграмма результирующего сигнала при $k_\mathrm{m} = 3$.</br>
+      По диаграмме $f^\prime = 2\ \text{kHz}$
     </td>
   </tr>
 </table>
 
 ### Выводы к заданию 2
 
-- $f_0^\prime = 2f_0$;
-- $A^\prime = k_\text{m}A^2$;
-- $f_0^\prime \ne f_0^\prime(k_\text{m})$ ($f_0^\prime$ не зависит от $k_\text{m}$)
+- $f^\prime = 2f$;
+- $A^\prime = k_\mathrm{m}A^2$.
 
-## Задание 3: проанализировать треугольный и прямоугольный сигналы с произвольными характеристиками в частотной и временной областях
+## Задание 3. Проанализировать треугольный и прямоугольный сигналы с произвольными характеристиками в частотной и временной областях
 
 <figure style="width: 50%;">
-  <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task3/task3_sheme.svg">
+  <img src="images/task3/task3_sheme.svg" alt="">
   <figcaption>
     Схема подключения блоков для анализа прямоугольного и треугольного сигналов
   </figcaption>
@@ -185,9 +236,9 @@ $\dfrac{f_\text{d}}{f_\text{0}} = 2^n$, где $n \in \mathbb{N}$
 
 Пусть:
 
-- $f_\text{d} = 512\ \text{kHz}$ (частота дискретизации, одинаковая для обоих сигналов);
+- $f_\mathrm{d} = 512\ \text{kHz}$ (частота дискретизации, одинаковая для обоих сигналов);
 - $f = 1\ \text{kHz}$ (частота сигналов, одинаковая для обоих);
-- $w_\text{p} = \frac{T}{4} = \frac{1}{4f}$ (ширина прямоугольного импульса).
+- $w_\mathrm{p} = \frac{T}{4} = \frac{1}{4f}$ (ширина прямоугольного импульса).
 
 Создадим соответствующие переменные:
 
@@ -215,12 +266,14 @@ $\dfrac{f_\text{d}}{f_\text{0}} = 2^n$, где $n \in \mathbb{N}$
 <table class="columns">
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task3/task3_time.png"/>
-      Временная диаграмма прямоугольного и треугольного сигналов. По диаграмме $T = 1\ \text{ms}$
+      <img src="images/task3/task3_time.png" alt=""/>
+      Временная диаграмма прямоугольного и треугольного сигналов.</br>
+      По диаграмме $T = 1\ \text{ms}$
     </td>
-    <td width="60%">
-      <img src="https://raw.githubusercontent.com/egor-masterskikh/MISN-building-labs/refs/heads/main/images/task3/task3_freq.png"/>
-      Частотная диаграмма прямоугольного сигнала. По диаграмме $f = 1\ \text{kHz}$
+    <td width="55%">
+      <img src="images/task3/task3_freq.png" alt=""/>
+      Частотная диаграмма прямоугольного сигнала.</br>
+      По диаграмме $f = 1\ \text{kHz}$
     </td>
   </tr>
 </table>
