@@ -35,6 +35,7 @@
 
   h1, h2, h3 {
     hyphens: none;
+    page-break-after: avoid;
   }
 
   :is(#titlepage) :is(h1, h2, h3, h4) {
@@ -55,6 +56,14 @@
 
   body {
     padding: 0;
+  }
+
+  li, figure, tr {
+    page-break-inside: avoid;
+  }
+
+  figcaption {
+    hyphens: none !important;
   }
 </style>
 
@@ -121,12 +130,20 @@ $f_\mathrm{d0} > 2f \Longrightarrow f_\mathrm{d0}$ удовлетворяет у
 <table class="columns">
   <tr>
     <td width="55%">
+    <figure>
       <img src="images/task1/task1_fd1k_time.png" alt=""/>
-      Временная диаграмма синусоидального сигнала при $f_\mathrm{d} = 1\ \text{kHz}$. По диаграмме период сигнала $T = 0,01\ \text{s}$
+      <figcaption>
+        Временная диаграмма синусоидального сигнала при $f_\mathrm{d} = 1\ \text{kHz}$. По диаграмме период сигнала $T = 0,01\ \text{s}$
+      </figcaption>
+    </figure>
     </td>
     <td>
+    <figure>
       <img src="images/task1/task1_fd1k_freq.png" alt=""/>
-      Частотная диаграмма синусоидального сигнала при $f_\mathrm{d0}$. По диаграмме $f = 100\ \text{Hz}$
+      <figcaption>
+        Частотная диаграмма синусоидального сигнала при $f_\mathrm{d} = 1\ \text{kHz}$. По диаграмме $f = 100\ \text{Hz}$
+      <figcaption>
+    </figure>
     </td>
   </tr>
 </table>
@@ -136,12 +153,20 @@ $f_\mathrm{d0} > 2f \Longrightarrow f_\mathrm{d0}$ удовлетворяет у
 <table class="columns">
   <tr>
     <td width="55%">
+    <figure>
       <img src="images/task1/task1_fd10k_time.png" alt=""/>
-      Временная диаграмма синусоидального сигнала при $f_\mathrm{d} = 10\ \text{kHz}$
+      <figcaption>
+        Временная диаграмма синусоидального сигнала при $f_\mathrm{d} = 10\ \text{kHz}$
+      </figcaption>
+    </figure>
     </td>
     <td>
+    <figure>
       <img src="images/task1/task1_fd10k_freq.png" alt=""/>
-      Частотная диаграмма синусоидального сигнала при $f_\mathrm{d} = 10\ \text{kHz}$
+      <figcaption>
+        Частотная диаграмма синусоидального сигнала при $f_\mathrm{d} = 10\ \text{kHz}$
+      </figcaption>
+    </figure>
     </td>
   </tr>
 </table>
@@ -151,12 +176,20 @@ $f_\mathrm{d0} > 2f \Longrightarrow f_\mathrm{d0}$ удовлетворяет у
 <table class="columns">
   <tr>
     <td width="55%">
+    <figure>
       <img src="images/task1/task1_fd100k_time.png" alt=""/>
-      Временная диаграмма синусоидального сигнала при $f_\mathrm{d} = 100\ \text{kHz}$
+      <figcaption>
+        Временная диаграмма синусоидального сигнала при $f_\mathrm{d} = 100\ \text{kHz}$
+      </figcaption>
+    </figure>
     </td>
     <td>
+    <figure>
       <img src="images/task1/task1_fd100k_freq.png" alt=""/>
-      Частотная диаграмма синусоидального сигнала при $f_\mathrm{d} = 100\ \text{kHz}$
+      <figcaption>
+        Частотная диаграмма синусоидального сигнала при $f_\mathrm{d} = 100\ \text{kHz}$
+      </figcaption>
+    </figure>
     </td>
   </tr>
 </table>
@@ -191,14 +224,22 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
 <table class="columns">
   <tr>
     <td width="55%">
+    <figure>
       <img src="images/task2/task2_k2_time.png" alt=""/>
-      Временная диаграмма результирующего сигнала при $k_\mathrm{m} = 2$.</br>
-      По диаграмме период результирующего сигнала $T^\prime = 0,5\ \text{ms}$; амплитуда результирующего сигнала $A^\prime = 2$
+      <figcaption>
+        Временная диаграмма результирующего сигнала при $k_\mathrm{m} = 2$.</br>
+        По диаграмме период результирующего сигнала $T^\prime = 0,5\ \text{ms}$; амплитуда результирующего сигнала $A^\prime = 2$
+      </figcaption>
+    </figure>
     </td>
     <td>
+    <figure>
       <img src="images/task2/task2_k2_freq.png" alt=""/>
-      Частотная диаграмма результирующего сигнала при $k_\mathrm{m} = 2$.</br>
-      По диаграмме частота результирующего сигнала $f^\prime = 2\ \text{kHz}$
+      <figcaption>
+        Частотная диаграмма результирующего сигнала при $k_\mathrm{m} = 2$.</br>
+        По диаграмме частота результирующего сигнала $f^\prime = 2\ \text{kHz}$
+      </figcaption>
+    </figure>
     </td>
   </tr>
 </table>
@@ -208,14 +249,22 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
 <table class="columns">
   <tr>
     <td width="55%">
+    <figure>
       <img src="images/task2/task2_k3_time.png" alt=""/>
-      Временная диаграмма результирующего сигнала при $k_\mathrm{m} = 3$.</br>
-      По диаграмме $T^\prime = 0,5\ \text{ms}$, $A^\prime = 3$
+      <figcaption>
+        Временная диаграмма результирующего сигнала при $k_\mathrm{m} = 3$.</br>
+        По диаграмме $T^\prime = 0,5\ \text{ms}$, $A^\prime = 3$
+      </figcaption>
+    </figure>
     </td>
     <td>
+    <figure>
       <img src="images/task2/task2_k3_freq.png" alt=""/>
-      Частотная диаграмма результирующего сигнала при $k_\mathrm{m} = 3$.</br>
+      <figcaption>
+        Частотная диаграмма результирующего сигнала при $k_\mathrm{m} = 3$.</br>
       По диаграмме $f^\prime = 2\ \text{kHz}$
+      </figcaption>
+    </figure>
     </td>
   </tr>
 </table>
@@ -228,7 +277,7 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
 ## Задание 3. Проанализировать треугольный и прямоугольный сигналы с произвольными характеристиками в частотной и временной областях
 
 <figure style="width: 50%;">
-  <img src="images/task3/task3_sheme.svg" alt="">
+  <img src="images/task3/task3_scheme.svg" alt="">
   <figcaption>
     Схема подключения блоков для анализа прямоугольного и треугольного сигналов
   </figcaption>
@@ -266,14 +315,22 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
 <table class="columns">
   <tr>
     <td>
+    <figure>
       <img src="images/task3/task3_time.png" alt=""/>
-      Временная диаграмма прямоугольного и треугольного сигналов.</br>
-      По диаграмме $T = 1\ \text{ms}$
+      <figcaption>
+        Временная диаграмма прямоугольного и треугольного сигналов.</br>
+        По диаграмме $T = 1\ \text{ms}$
+      </figcaption>
+    </figure>
     </td>
     <td width="55%">
+    <figure>
       <img src="images/task3/task3_freq.png" alt=""/>
-      Частотная диаграмма прямоугольного сигнала.</br>
-      По диаграмме $f = 1\ \text{kHz}$
+      <figcaption>
+        Частотная диаграмма прямоугольного сигнала.</br>
+        По диаграмме $f = 1\ \text{kHz}$
+      </figcaption>
+    </figure>
     </td>
   </tr>
 </table>
