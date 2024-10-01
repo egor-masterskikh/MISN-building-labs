@@ -16,6 +16,10 @@ tr {
     border-bottom: 1px solid;
 }
 
+thead tr, thead th {
+    border: none !important;
+}
+
 .columns tbody, .columns td, .columns tr {
     border: none !important;
 }
@@ -59,7 +63,7 @@ h1, h2, h3 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 27cm;
+    height: 26cm;
 }
 
 body {
