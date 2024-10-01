@@ -46,7 +46,7 @@ $f_\mathrm{d0} > 2f \Longrightarrow f_\mathrm{d0}$ удовлетворяет у
       <img src="images/task1/task1_fd1k_freq.png" alt=""/>
       <figcaption>
         Частотная диаграмма синусоидального сигнала при $f_\mathrm{d} = 1\ \text{kHz}$. По диаграмме $f = 100\ \text{Hz}$
-      <figcaption>
+      </figcaption>
     </figure>
     </td>
   </tr>
@@ -131,7 +131,7 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
     <figure>
       <img src="images/task2/task2_k2_time.png" alt=""/>
       <figcaption>
-        Временная диаграмма результирующего сигнала при $k_\mathrm{m} = 2$.</br>
+        Временная диаграмма результирующего сигнала при $k_\mathrm{m} = 2$.<br>
         По диаграмме период результирующего сигнала $T^\prime = 0,5\ \text{ms}$; амплитуда результирующего сигнала $A^\prime = 2$
       </figcaption>
     </figure>
@@ -140,7 +140,7 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
     <figure>
       <img src="images/task2/task2_k2_freq.png" alt=""/>
       <figcaption>
-        Частотная диаграмма результирующего сигнала при $k_\mathrm{m} = 2$.</br>
+        Частотная диаграмма результирующего сигнала при $k_\mathrm{m} = 2$.<br>
         По диаграмме частота результирующего сигнала $f^\prime = 2\ \text{kHz}$
       </figcaption>
     </figure>
@@ -156,7 +156,7 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
     <figure>
       <img src="images/task2/task2_k3_time.png" alt=""/>
       <figcaption>
-        Временная диаграмма результирующего сигнала при $k_\mathrm{m} = 3$.</br>
+        Временная диаграмма результирующего сигнала при $k_\mathrm{m} = 3$.<br>
         По диаграмме $T^\prime = 0,5\ \text{ms}$, $A^\prime = 3$
       </figcaption>
     </figure>
@@ -165,7 +165,7 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
     <figure>
       <img src="images/task2/task2_k3_freq.png" alt=""/>
       <figcaption>
-        Частотная диаграмма результирующего сигнала при $k_\mathrm{m} = 3$.</br>
+        Частотная диаграмма результирующего сигнала при $k_\mathrm{m} = 3$.<br>
       По диаграмме $f^\prime = 2\ \text{kHz}$
       </figcaption>
     </figure>
@@ -202,15 +202,15 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
 
 и зададим конфигурацию блоков:
 
-| *Pulse Generator* | |
-| -- | -- |
+| Pulse Generator | |
+| :-- | -- |
 | Pulse type | Sample based |
 | Sample time | 1 / SampleFreq |
 | Period (number of samples) | SampleFreq / SigFreq |
 | Pulse width (number of samples) | SampleFreq / (4 * SigFreq) |
 
-| *Triangle Generator* | |
-| -- | -- |
+| Triangle Generator | |
+| :-- | -- |
 | Sample time | 1 / SampleFreq |
 | Frequency (Hz) | SigFreq |
 
@@ -222,7 +222,7 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
     <figure>
       <img src="images/task3/task3_time.png" alt=""/>
       <figcaption>
-        Временная диаграмма прямоугольного и треугольного сигналов.</br>
+        Временная диаграмма прямоугольного и треугольного сигналов.<br>
         По диаграмме $T = 1\ \text{ms}$
       </figcaption>
     </figure>
@@ -231,7 +231,7 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
     <figure>
       <img src="images/task3/task3_freq.png" alt=""/>
       <figcaption>
-        Частотная диаграмма прямоугольного сигнала.</br>
+        Частотная диаграмма прямоугольного сигнала.<br>
         По диаграмме $f = 1\ \text{kHz}$
       </figcaption>
     </figure>
@@ -241,6 +241,7 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
 
 ### Выводы к заданию 3
 
-# TODO
+- при одинаковой частоте сигнала на прямоугольный сигнал приходится в два раза больше гармоник
+- 
 
 {% endblock %}
