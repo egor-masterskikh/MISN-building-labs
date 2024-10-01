@@ -22,7 +22,8 @@
 
 $2^q = 2A \Longrightarrow A = 2^{q - 1}$
 
-### Построение ИКМ синусоидального сигнала
+<div class="nobreak">
+<h3>Построение ИКМ синусоидального сигнала</h3>
 
 <figure style="width: 70%;">
   <img src="images/task1/task1.svg" alt="">
@@ -30,23 +31,25 @@ $2^q = 2A \Longrightarrow A = 2^{q - 1}$
     Схема блоков для анализа ИКМ синусоидального сигнала
   </figcaption>
 </figure>
+</div>
 
 | Analog Signal (Sine Wave) | |
-| -- | -- |
+| :-- | -- |
 | Frequency (rad/sec) | 2 * pi |
 | Amplitude | 4 |
 
-| Discretizer (Zero-Order Hold) | |
-| -- | -- |
+| Discretizer <br>(Zero-Order Hold) | |
+| :-- | -- |
 | Sample time | 0.1 |
 
-| Quantizer + Encoder (Uniform Encoder) | |
-| -- | -- |
+| Quantizer + Encoder <br>(Uniform Encoder) | |
+| :-- | -- |
 | Output type | Signed integer |
 | Bits | 3 |
 | Peak | 4 |
 
-### Анализ ИКМ синусоидального сигнала
+<div class="nobreak">
+<h3>Анализ ИКМ синусоидального сигнала</h3>
 
 <figure style="width: 60%;">
   <img src="images/task1/task1_time.png" alt="">
@@ -54,6 +57,7 @@ $2^q = 2A \Longrightarrow A = 2^{q - 1}$
     Временная диаграмма дискретного и квантованного сигналов, их аналогового прототипа и ошибки квантования
   </figcaption>
 </figure>
+</div>
 
 ## Задание 2. Проанализировать канал связи в зависимости от отношения сигнал/шум
 
@@ -70,7 +74,8 @@ $2^q = 2A \Longrightarrow A = 2^{q - 1}$
 
 $A = 2^{q - 1}$
 
-### Модель
+<div class="nobreak">
+<h3>Модель</h3>
 
 <figure>
   <img src="images/task2/task2_scheme.svg">
@@ -78,6 +83,7 @@ $A = 2^{q - 1}$
     Схема блоков для анализа канала связи
   </figcaption>
 </figure>
+</div>
 
 Чтобы лучше уследить связь между параметрами модели, создадим переменные рабочего пространства модели (Model Workspace):
 
