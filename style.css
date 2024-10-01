@@ -64,3 +64,7 @@ li, figure, tr {
 figcaption {
     hyphens: none !important;
 }
+
+#title-block-header {
+    display: none;
+}

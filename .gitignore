@@ -2,4 +2,6 @@
 **/*.slx
 **/*.pdf
 .vscode/
+venv
+.idea/
 
