@@ -20,16 +20,25 @@ tr {
     border: none !important;
 }
 
+body {
+    counter-reset: figureCounter;
+}
+
 figure {
     display: table;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
     margin-bottom: 1em;
+    counter-increment: figureCounter;
 }
 
 figure img, figcaption {
     display: table-row;
+}
+
+figcaption:before {
+    content: "Рисунок " counter(figureCounter) ". ";
 }
 
 h1, h2, h3 {

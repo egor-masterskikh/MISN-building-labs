@@ -10,7 +10,7 @@ env = Environment(
 
 lab1_name = "Исследование временно-частотных характеристик сигналов разной формы и амплитудно-модулированных сигналов"
 
-lab1 = env.get_template("report.md").render(
+lab1 = env.get_template("lab1.md").render(
     lab_num=1,
     lab_name=lab1_name
 )
