@@ -1,3 +1,12 @@
+---
+title: {{ self.lab_title() }}
+lang: ru
+---
+
+<style>
+  {% include 'style.css' %}
+</style>
+
 <div id="titlepage">
   <div>
   <h3>
@@ -9,10 +18,10 @@
   </h2>
 
   <h1>
-    Отчёт по лабораторной работе №{{ lab_num }}
+    Отчёт по лабораторной работе №{% block lab_num %}{% endblock %}
   </h1>
 
-  <h2>{{ lab_name }}</h2>
+  <h2>{% block lab_title %}{% endblock %}</h2>
 
   <br>
 
@@ -34,3 +43,5 @@
 </div>
 
 <div style="page-break-after: always;"></div>
+
+{% block body %}{% endblock %}

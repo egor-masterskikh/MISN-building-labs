@@ -1,6 +1,14 @@
-<link rel="stylesheet" href="../style.css">
+{% extends 'base.md' %}
 
-{% include 'titlepage.md' %}
+{% block lab_num %}
+  2
+{% endblock %}
+
+{% block lab_title %}
+  Импульсно-кодовая модуляция
+{% endblock %}
+
+{% block body %}
 
 ### Цели работы
 
@@ -163,3 +171,5 @@ $k = \dfrac{A}{\sqrt{P_\mathrm{w}}}$,
 ## Выводы по работе
 
 # TODO
+
+{% endblock %}
