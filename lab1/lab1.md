@@ -204,17 +204,20 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
 
 | Pulse Generator | |
 | :-- | -- |
+| Amplitude | 1 |
 | Pulse type | Sample based |
 | Sample time | 1 / SampleFreq |
 | Period (number of samples) | SampleFreq / SigFreq |
 | Pulse width (number of samples) | SampleFreq / (4 * SigFreq) |
+| Phase delay (number of samples) | 0 |
 
 | Triangle Generator | |
 | :-- | -- |
 | Sample time | 1 / SampleFreq |
 | Frequency (Hz) | SigFreq |
+| Phase (degrees) | 90 |
 
-### Анализ прямоугольного и треугольного сигналов
+### Диаграммы прямоугольного и треугольного сигналов
 
 <table class="columns">
   <tr>
@@ -239,9 +242,13 @@ $\dfrac{f_\mathrm{d}}{f} = 2^n$, где $n \in \mathbb{N}$
   </tr>
 </table>
 
-### Выводы к заданию 3
+### Анализ прямоугольного и треугольного сигналов
 
-- при одинаковой частоте сигнала на прямоугольный сигнал приходится в два раза больше гармоник
-- 
+- при одинаковой частоте сигналов на прямоугольный приходится в 2 раза больше гармоник, следовательно, по теореме Парсеваля, энергия прямоугольного сигнала в 2 раза больше энергии треугольного:
+
+  $\displaystyle E = \int\limits_{-\infty}^{+\infty} |\mathcal{F}\{x(t)\}|^2 \cdot d\omega\ \Longrightarrow\ E_\mathrm{p} \approx 2 E_\mathrm{t}$
+
+- при известной ширине импульса для восстановления прямоугольного сигнала требуются одна точка: в начале или конце импульса; для восстановления треугольного сигнала требуются как минимум две точки.\
+Следовательно при передаче одной и той же информации для прямоугольного сигнала требуется меньше вычислений.
 
 {% endblock %}
