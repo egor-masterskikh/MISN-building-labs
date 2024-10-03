@@ -104,7 +104,7 @@ $A = 2^{q - 1}$
 | Name | Value |
 | :-- | :-- |
 | SigFreq | 1 |
-| SampleFreq | 2^SigFreq |
+| SampleFreq | 2^7 * SigFreq |
 | QuantDepth | 8 |
 
 Определим параметры блоков модели с использованием данных переменных:
