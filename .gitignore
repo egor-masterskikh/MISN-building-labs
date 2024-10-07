@@ -1,7 +1,7 @@
 **/*.html
-**/*.slx
+**/*.slx*
+**/slprj/
 **/*.pdf
 .vscode/
 venv
 .idea/
-
