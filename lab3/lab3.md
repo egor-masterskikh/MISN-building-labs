@@ -37,7 +37,7 @@
 ### Модель
 
 <figure style="width: 90%;">
-  <img src="images/task1_scheme.svg" alt="">
+  <img src="images/time_scheme.svg" alt="">
   <figcaption>
     Модель двухканальной системы связи ИКМ
   </figcaption>
@@ -104,8 +104,49 @@
 
 ## Задание 3. Исследовать характеристики модели системы связи в частотной области
 
+<figure>
+  <img src="images/freq_scheme.svg" alt="">
+  <figcaption>
+    Схема исследования модели системы связи в частотной области
+  </figcaption>
+</figure>
 
+<table class="columns">
+<tr valign="top">
+  <td>
+    <figure>
+      <img src="images/SNR10_freq.png" alt="">
+      <figcaption>
+        Частотная диаграмма канальных сигналов при $\text{SNR} = 10$<br>
+        На диаграмме хорошо видно, что $f_1 = 1\ \text{Hz}$, $f_2 = 2\ \text{Hz}$
+      </figcaption>
+    </figure>
+  </td>
+  <td>
+    <figure>
+      <img src="images/SNR5_freq.png" alt="">
+      <figcaption>
+        Частотная диаграмма канальных сигналов при $\text{SNR} = 5$
+      </figcaption>
+    </figure>
+  </td>
+</tr>
+<tr>
+  <td colspan="2">
+    <figure style="width: 50%;">
+      <img src="images/SNR2_freq.png" alt="">
+      <figcaption>
+        Частотная диаграмма канальных сигналов при $\text{SNR} = 2$
+      </figcaption>
+    </figure>
+  </td>
+</tr>
+</table>
 
 ## Задание 4. Сделать вывод о работоспособности канала связи в зависимости от качества сигнала
+
+На всех трёх частотных диаграммах хорошо видны частоты канальных сигналов ($f_1 = 1\ \text{Hz}$, $f_2 = 2\ \text{Hz}$).
+То есть даже при высоком уровне шума в канале легко выделить сигнал.
+Другими словами, представленная двухканальная система связи имеет высокую помехоустойчивость.
 
 {% endblock %}
