@@ -69,6 +69,8 @@
 | Noise power | (2^(q - 1)) ^ 2 / (10^SNR) |
 | Sample time | 1 / fd |
 
+<div class="nobreak">
+
 ## Задание 2. Изучить поведение канала при разделении канальных сигналов для значений уровня отношения сигнал/шум: 10, 5, 2
 
 <table class="columns">
@@ -102,6 +104,10 @@
 </tr>
 </table>
 
+</div>
+
+<div class="nobreak">
+
 ## Задание 3. Исследовать характеристики модели системы связи в частотной области
 
 <figure>
@@ -111,14 +117,15 @@
   </figcaption>
 </figure>
 
+</div>
+
 <table class="columns">
 <tr valign="top">
   <td>
     <figure>
       <img src="images/SNR10_freq.png" alt="">
       <figcaption>
-        Частотная диаграмма канальных сигналов при $\text{SNR} = 10$<br>
-        На диаграмме хорошо видно, что $f_1 = 1\ \text{Hz}$, $f_2 = 2\ \text{Hz}$
+        Частотная диаграмма канальных сигналов при $\text{SNR} = 10$
       </figcaption>
     </figure>
   </td>
