@@ -112,6 +112,51 @@ $f_\mathrm{d} = 1024\ \text{kHz} \Longleftarrow \mathop{\mathrm{lb}} f_\mathrm{d
 
 ## Задание 2. Построить модель выделения индивидуального сигнала из группового, провести сравнительный анализ характеристик входного и выходного сигналов
 
+Сначала, с помощью полосового фильтра, будем выделять индивидуальный сигнал из группового, а затем демодулировать его.
+Таким образом мы должны получить исходный сигнал одного из каналов.
 
+<figure style="width: 70%">
+<img src="images/individual_signal_extractor_scheme.svg" alt="">
+<figcaption>
+  Схема выделителя индивидуального сигнала из группового
+</figcaption>
+</figure>
+
+Частота модулированного сигнала $k$-го канала равна сумме его несущей и огибающей частот:
+
+$f_{\mathrm{m} \mkern 2mu k} = f_{\mathrm{c} \mkern 2mu k} + f_k$
+
+Чтобы выделить сигнал только от одного канала и не захватить соседний, ограничим значения верхней и нижней частот пропускания фильтра, например так, чтобы они отстояли от модулированной частоты канала на $h / 4$:
+
+- $f_{\text{pass1} \mkern 2mu k} = f_{\mathrm{m} \mkern 2mu k} - h/4$
+- $f_{\text{pass2} \mkern 2mu k} = f_{\mathrm{m} \mkern 2mu k} + h/4$
+
+Значения верхней и нижней частот задерживания пусть отстоят от верхней и нижней частот пропускания (соответственно) также на $h/4$:
+
+- $f_{\text{stop1} \mkern 2mu k} = f_{\text{pass1} \mkern 2mu k} - h/4$
+- $f_{\text{stop2} \mkern 2mu k} = f_{\text{pass2} \mkern 2mu k} + h/4$
+
+Итак, конфигурация блоков для выделения сигнала $k$-го канала:
+
+| Bandpass Filter | |
+| :-- | :-- |
+| Response Type | Bandpass |
+| Design Method | IIR Butterworth |
+| Filter Order | Minimum order |
+| **Frequency <br>Specifications** | |
+| Units | Hz |
+| Fs | $f_d$ |
+| Fstop1 | $f_{\text{stop1} \mkern 2mu k}$ |
+| Fpass1 | $f_{\text{pass1} \mkern 2mu k}$ |
+| Fpass2 | $f_{\text{pass2} \mkern 2mu k}$ |
+| Fstop2 | $f_{\text{stop2} \mkern 2mu k}$ |
+
+| Demodulator <br>(DSB AM Demodulator Passband) | |
+| :-- | :-- |
+| Input signal offset | Ampl |
+| Carrier frequency | f_c_min + $(k - 1)$ * h |
+| Lowpass filter design method | Butterworth |
+| Filter order | 2 |
+| Cutoff frequency | *TODO* |
 
 {% endblock %}
