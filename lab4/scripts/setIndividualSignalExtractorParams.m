@@ -8,7 +8,7 @@ f_pass1_extracted = extracted_ch_filter_freqs(2);
 f_pass2_extracted = extracted_ch_filter_freqs(3);
 f_stop2_extracted = extracted_ch_filter_freqs(4);
 
-fc_extracted = funs.fc_(extracted_ch_number);
+fc_extracted = fc_seq(extracted_ch_number);
 f_cutoff_extracted = fc_extracted + delta_f;
 
 set_param(individual_signal_extractor_name, "fc", num2str(fc_extracted));

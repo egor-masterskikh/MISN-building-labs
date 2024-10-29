@@ -1,12 +1,9 @@
 for k = 1:12
     ch_name = funs.ch_name_(k);
 
-    % установить параметры канала
-    for ch_req_param = ch_req_params
-        funs.ch_set_param(ch_name, ch_req_param, k);
-    end
+    set_param(ch_name, "f", num2str(f_seq(k)));
 
-    % сохранить в рабочем пространстве Matlab параметры фильтра канала
+    % сохранить в рабочем пространстве Matlab параметры канального фильтра
     ch_filter_freqs = funs.ch_filter_freqs_(k);
     k_ = num2str(k);
     eval(strcat( ...
@@ -17,4 +14,4 @@ for k = 1:12
     ));
 end
 
-clear k ch_name ch_req_param ch_filter_freqs k_;
+clear k ch_name ch_filter_freqs k_;

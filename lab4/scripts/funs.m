@@ -11,71 +11,42 @@ classdef funs
             ch_filter_name = strcat(funs.ch_name_(k), "/Modulating Freq Filter");
         end
 
-        % несущая частота k-го канала
-        function fc_k = fc_(k)
-            global fc_1 delta_fc;
-            fc_k = fc_1 + delta_fc * (k - 1);
+        function fc_seq = get_fc_seq()
+            global fc_1 delta_fc total_channels;
+            fc_seq = fc_1:delta_fc:(fc_1 + delta_fc * (total_channels - 1));
         end
 
-        % частота сигнала k-го канала
-        function f_k = f_(k)
-            global f_max delta_f total_channels;
-            f_k = f_max - (total_channels - k) * delta_f;
-        end
-
-        % частота модулированного сигнала k-го канала
-        function fm_k = fm_(k)
-            fm_k = funs.fc_(k) + funs.f_(k);
+        function f_seq = get_f_seq()
+            global f_min f_max delta_f total_channels;
+            f_seq = randsample(f_min:delta_f:f_max, total_channels);
         end
 
         % частота левой границы полосы пропускания полосового фильтра
         function f_pass1 = f_pass1_(k)
-            global delta_f;
-            f_pass1 = funs.fm_(k) - delta_f / 2;
+            global fm_seq f_seq;
+            f_pass1 = fm_seq(k) - f_seq(k) / 3;
+        end
+
+        function f_pass2 = f_pass2_(k)
+            global fm_seq f_seq;
+            f_pass2 = fm_seq(k) + f_seq(k) / 3;
         end
 
         % частота левой границы полосы задерживания полосового фильтра
         function f_stop1 = f_stop1_(k)
-            global delta_f;
-            f_stop1 = funs.f_pass1_(k) - delta_f / 2;
-        end
-
-        function f_pass2 = f_pass2_(k)
-            global delta_f;
-            f_pass2 = funs.fm_(k) + delta_f / 2;
+            global f_seq;
+            f_stop1 = funs.f_pass1_(k) - f_seq(k) / 3;
         end
 
         function f_stop2 = f_stop2_(k)
-            global delta_f;
-            f_stop2 = funs.f_pass2_(k) + delta_f / 2;
+            global f_seq;
+            f_stop2 = funs.f_pass2_(k) + f_seq(k) / 3;
         end
 
-        % создать параметр канала, если необходимо, и установить его значение
-        % param -- параметр как экземпляр структуры с полями Name, Type, Prompt, ValGenerator
-        % k -- номер канала
-        function ch_set_param(ch_name, param, k)
-            val_generator_expr = strcat(param.ValGenerator, '(', num2str(k), ')');
-            val = num2str(eval(val_generator_expr));
-            try
-                set_param(ch_name, param.Name, val);
-            catch exception
-                switch exception.identifier
-                    case "Simulink:Commands:ParamUnknown"
-                        ch = Simulink.Mask.get(ch_name);
-                        ch.addParameter( ...
-                            "Type", param.Type, ...
-                            "Name", param.Name, ...
-                            "Prompt", param.Prompt, ...
-                            "Value", val ...
-                        );
-                        set_param(ch_name, param.Name, val);
-                    otherwise
-                        rethrow(exception);
-                end
-            end
-        end
-
-        function freqs = ch_filter_freqs_(k)
+        function freqs = individual_signal_extractor_filter_freqs_(k)
+            % использование функций f_pass или f_stop подразумевает, что
+            % частота сигнала известа. Но в выделителе сигнала она не может
+            % быть известна, поэтому нужно переписать тело функции
             freqs = [funs.f_stop1_(k) funs.f_pass1_(k) funs.f_pass2_(k) funs.f_stop2_(k)];
         end
     end

@@ -10,153 +10,150 @@
 
 {% block body %}
 
-## Задание 1. Построить модель первичной группы (ПГ): 12 каналов тональной частоты, с однократным преобразованием с помощью несущих частот 64, 68, 72, .., 108 кГц
+## Задание. Построить модель выделения индивидуального сигнала из группового: 12 каналов тональной частоты, с однократным преобразованием с помощью несущих частот 64, 68, 72, .., 108 кГц. Провести сравнительный анализ характеристик входного и выходного сигналов
 
-Введём обозначения:
+#### Обозначения
 
-- $f_\text{c min} = 64\ \text{kHz}$ — минимальная несущая частота
-- $h = 4\ \text{kHz}$ — шаг между несущими частотами соседних каналов
-- $f_\text{c max} = 108\ \text{kHz}$ — максимальная несущая частота
+<table>
+  <tr>
+    <td style="text-align: right;">$n$</td>
+    <td>общее количество каналов в группе</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$k$</td>
+    <td>номер канала</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$f_{\text{c} \mkern 2mu k}$</td>
+    <td>несущая частота сигнала $k$-го канала</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$\Delta f_\text{c}$</td>
+    <td>шаг между значениями несущих частот соседних каналов</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$f_\text{d}$</td>
+    <td>частота дискретизации канального сигнала</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$A$</td>
+    <td>амплитуда входного сигнала, одинаковая для всех каналов</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$f_k$</td>
+    <td>частота входного сигнала $k$-го канала</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$f_\text{max}$</td>
+    <td>максимальная частота входного канального сигнала</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$\Delta f$</td>
+    <td>шаг между ближайшими значениями частот входных сигналов</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$f_{\text{m} \mkern 2mu k} = f_k + f_{\text{c} \mkern 2mu k}$</td>
+    <td>модулированная частота сигнала $k$-го канала</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$\xi > 2$</td>
+    <td>количество отсчётов, приходящихся на период модулированного сигнала с наибольшей модулирующей частотой</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">
+      $f_{\text{stop} 1 \mkern 2mu k}$, $f_{\text{stop} 2 \mkern 2mu k}$<br>
+      $f_{\text{pass} 1 \mkern 2mu k}$, $f_{\text{pass} 2 \mkern 2mu k}$
+    </td>
+    <td>частоты левой и правой границ полосы задерживания и левой и правой границ полосы пропускания соответственно полосового фильтра $k$-го канала</td>
+  </tr>
+</table>
 
-Амплитуду входного сигнала зададим одинаковой для всех каналов и равной единице.
+### Дано
 
-Частоту дискретизации выберем такой, чтобы при наибольшей несущей частоте на одном периоде несущего сигнала вместилось хотя бы $2^3$ отсчётов.
-Пусть, например:
+- $f_{\text{c} \mkern 1mu 1} = 64\ \text{kHz}$
+- $\Delta f_\text{c} = 4\ \text{kHz}$
+- $f_{\text{c} \mkern 2mu k} = f_{\text{c} \mkern 1mu 1} + (k - 1) \cdot \Delta f_\text{c}$
+- $f_\text{max} < \Delta f_\text{c}$
 
-$f_\mathrm{d} = 1024\ \text{kHz} \Longleftarrow \mathop{\mathrm{lb}} f_\mathrm{d} = \lfloor \mathop{\mathrm{lb}} (2^3 \cdot f_\text{c max}) \rfloor + 1$
+### Решение
 
-В качестве входных канальных сигналов возьмём, например, ступени «Соль» и «Ля» контр-, большой, малой и трёх первых октав.
-И распределим их по каналам, например, так:
-
-- $f_1 = 49\ \text{Hz}$ — «Соль» контроктавы
-- $f_2 = 55\ \text{Hz}$ — «Ля» контроктавы
-- $f_3 = 98\ \text{Hz}$ — «Соль» большой октавы 
-- $f_4 = 110\ \text{Hz}$ — «Ля» большой октавы
-- $f_5 = 196\ \text{Hz}$ — «Соль» малой октавы
-- $f_6 = 220\ \text{Hz}$ — «Ля» малой октавы
-- $f_7 = 392\ \text{Hz}$ — «Соль» первой октавы
-- $f_8 = 440\ \text{Hz}$ — «Ля» первой октавы
-- $f_9 = 784\ \text{Hz}$ — «Соль» второй октавы
-- $f_{10} = 880\ \text{Hz}$ — «Ля» второй октавы
-- $f_{11} = 1568\ \text{Hz}$ — «Соль» третьей октавы 
-- $f_{12} = 1760\ \text{Hz}$ — «Ля» третьей октавы
-
-Введём теперь соответствующие параметры модели в Simulink:
-
-| Model Workspace <br>Variables | |
-| :-- | :-- |
-| f_c_min | 64e3 |
-| h | 4e3 |
-| Ampl | 1 |
-| f_d | 1024e3 |
-| f_1 | 49 |
-| f_2 | 55 |
-| f_3 | 98 |
-| f_4 | 110 |
-| f_5 | 196 |
-| f_6 | 220 |
-| f_7 | 392 |
-| f_8 | 440 |
-| f_9 | 784 |
-| f_10 | 880 |
-| f_11 | 1568 |
-| f_12 | 1760 |
-
-### Модель $k$-го канала
-
-Для наглядности связи между входным сигналом и огибающей модулированного сигнала построим модель так, чтобы отобразить оба сигнала на одной диаграмме.
-
-Учтём следующее: чтобы частота огибающих модулированного сигнала соответствовала частоте входного сигнала, следует ввести сдвиг входного сигнала на величину амплитуды (входного сигнала).
-
-Этим двум условиям соответствует схема, например, первого канала.
-Для остальных каналов схема аналогична.
-
-<figure style="width: 66%">
-<img src="images/first_channel_scheme.svg" alt="">
-<figcaption>
-  Схема 1-го канала
-</figcaption>
+<figure style="width: 80%;">
+  <img src="images/general_scheme.svg">
+  <figcaption>
+    Модель выделения индивидуального сигнала из первичной группы
+  </figcaption>
 </figure>
 
-Задаём конфигурацию блоков:
+#### Пусть
 
-| Input Signal <br>(Sine Wave) | |
-| :-- | :-- |
-| Amplitude | Ampl |
-| Frequency (Hz) | f_$k$ |
-| Sample mode | Discrete |
-| Sample time | 1 / f_d |
+- $A = 1\mkern 9mu \forall\ k = 1\ldots n$
+- $f_\text{max} = 0.5 \cdot \Delta f_\text{c} = 2\ \text{kHz}$
+- $f_\text{min} = 0.5\ \text{kHz}$
+- $\Delta f = 100\ \text{Hz}$
+- $f_k$ — случайная величина; $\Omega_{f_k} = [f_\text{min}\ldots f_\text{max},\ \Delta f]$
+- $\xi = 2^3$
+- $f_\text{d} = 2^{\left\lceil \mathop{\mathrm{lb}} \left(\xi \cdot f_{\text{m} \mkern 2mu n}\right) \right\rceil} = 1\,048\,576\ \text{Hz}$<br>Таким образом $f_\text{d}$ равна ближайшей (в большую сторону) степени двойки, такой, что на период модулированного сигнала с наибольшей модулирующей частотой приходится $\xi$ отсчётов.
+- $f_{\text{pass} 1 \mkern 2mu k} = f_{\text{m} \mkern 2mu k} - 0.5 \cdot \Delta f$
+- $f_{\text{pass} 2 \mkern 2mu k} = f_{\text{m} \mkern 2mu k} + 0.5 \cdot \Delta f$
+- $f_{\text{stop} 1 \mkern 2mu k} = f_{\text{pass} 1 \mkern 2mu k} - 0.5 \cdot \Delta f$
+- $f_{\text{stop} 2 \mkern 2mu k} = f_{\text{pass} 2 \mkern 2mu k} + 0.5 \cdot \Delta f$
 
-| Modulator <br>(DSB AM Modulator Passband) | |
-| :-- | :-- |
-| Input signal offset | Ampl |
-| Carrier frequency (Hz) | f_c_min + $(k - 1)$ * h |
+#### Модель $k$-го канала
 
-После симуляции получаем временную диаграмму с модулированным и входным сигналами:
-
-<figure style="width: 60%">
-<img src="images/twelfth_channel_diagram.png" alt="">
-<figcaption>
-  Временная диаграмма 12-го канала
-</figcaption>
+<figure style="width: 80%;">
+  <img src="images/single_channel_scheme.svg">
+  <figcaption>
+    Модель одного канала
+  </figcaption>
 </figure>
 
-### Схема первичной группы
+<table class="columns">
+<tr valign="bottom">
+  <td>
+    <figure>
+      <img src="images/channel_time_diagrams.png">
+      <figcaption>
+        Временные диаграммы канального сигнала
+      </figcaption>
+    </figure>
+  </td>
+  <td>
+    <figure>
+      <img src="images/channel_freq_diagrams.png">
+      <figcaption>
+        Частотные диаграммы канального сигнала
+      </figcaption>
+    </figure>
+  </td>
+</tr>
+</table>
+
+Зачем модулировать входной сигнал?
+
+TODO
+
+Зачем фильтровать модулированный сигнал?
+
+TODO
+
+#### Групповой сигнал
+
+<figure style="width: 80%;">
+  <img src="images/group_freq_diagram.png">
+  <figcaption>
+    Частотная диаграмма группового сигнала
+  </figcaption>
+</figure>
+
+#### Модель выделителя индивидуального сигнала
 
 <figure>
-<img src="images/primary_group_scheme.svg" alt="">
-<figcaption>
-  Схема первичной группы
-</figcaption>
+  <img src="images/individual_signal_extractor_scheme.svg">
+  <figcaption>
+    Модель выделителя индивидуального сигнала
+  </figcaption>
 </figure>
 
-## Задание 2. Построить модель выделения индивидуального сигнала из группового, провести сравнительный анализ характеристик входного и выходного сигналов
 
-Сначала, с помощью полосового фильтра, будем выделять индивидуальный сигнал из группового, а затем демодулировать его.
-Таким образом мы должны получить исходный сигнал одного из каналов.
-
-<figure style="width: 70%">
-<img src="images/individual_signal_extractor_scheme.svg" alt="">
-<figcaption>
-  Схема выделителя индивидуального сигнала из группового
-</figcaption>
-</figure>
-
-Частота модулированного сигнала $k$-го канала равна сумме его несущей и огибающей частот:
-
-$f_{\mathrm{m} \mkern 2mu k} = f_{\mathrm{c} \mkern 2mu k} + f_k$
-
-Чтобы выделить сигнал только от одного канала и не захватить соседний, ограничим значения верхней и нижней частот пропускания фильтра, например так, чтобы они отстояли от модулированной частоты канала на $h / 4$:
-
-- $f_{\text{pass1} \mkern 2mu k} = f_{\mathrm{m} \mkern 2mu k} - h/4$
-- $f_{\text{pass2} \mkern 2mu k} = f_{\mathrm{m} \mkern 2mu k} + h/4$
-
-Значения верхней и нижней частот задерживания пусть отстоят от верхней и нижней частот пропускания (соответственно) также на $h/4$:
-
-- $f_{\text{stop1} \mkern 2mu k} = f_{\text{pass1} \mkern 2mu k} - h/4$
-- $f_{\text{stop2} \mkern 2mu k} = f_{\text{pass2} \mkern 2mu k} + h/4$
-
-Итак, конфигурация блоков для выделения сигнала $k$-го канала:
-
-| Bandpass Filter | |
-| :-- | :-- |
-| Response Type | Bandpass |
-| Design Method | IIR Butterworth |
-| Filter Order | Minimum order |
-| **Frequency <br>Specifications** | |
-| Units | Hz |
-| Fs | $f_d$ |
-| Fstop1 | $f_{\text{stop1} \mkern 2mu k}$ |
-| Fpass1 | $f_{\text{pass1} \mkern 2mu k}$ |
-| Fpass2 | $f_{\text{pass2} \mkern 2mu k}$ |
-| Fstop2 | $f_{\text{stop2} \mkern 2mu k}$ |
-
-| Demodulator <br>(DSB AM Demodulator Passband) | |
-| :-- | :-- |
-| Input signal offset | Ampl |
-| Carrier frequency | f_c_min + $(k - 1)$ * h |
-| Lowpass filter design method | Butterworth |
-| Filter order | 2 |
-| Cutoff frequency | *TODO* |
 
 {% endblock %}
