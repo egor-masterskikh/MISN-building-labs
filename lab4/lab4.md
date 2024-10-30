@@ -57,7 +57,11 @@
   </tr>
   <tr>
     <td style="text-align: right;">$\xi > 2$</td>
-    <td>количество отсчётов, приходящихся на период модулированного сигнала с наибольшей модулирующей частотой</td>
+    <td>количество отсчётов, приходящихся на период модулированного сигнала с наибольшей модулированной частотой</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">$f_k^\text{ext}$</td>
+    <td>частота содержащего информацию сигнала $k$-го канала после выделения</td>
   </tr>
   <tr>
     <td style="text-align: right;">
@@ -65,6 +69,28 @@
       $f_{\text{pass} 1 \mkern 2mu k}$, $f_{\text{pass} 2 \mkern 2mu k}$
     </td>
     <td>частоты левой и правой границ полосы задерживания и левой и правой границ полосы пропускания соответственно полосового фильтра $k$-го канала</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">
+      $f_{\text{stop} 1 \mkern 2mu k}^\text{ext}$, $f_{\text{stop} 2 \mkern 2mu k}^\text{ext}$<br>
+      $f_{\text{pass} 1 \mkern 2mu k}^\text{ext}$, $f_{\text{pass} 2 \mkern 2mu k}^\text{ext}$
+    </td>
+    <td>частоты левой и правой границ полосы задерживания и левой и правой границ полосы пропускания соответственно полосового фильтра *выделителя* $k$-го канала</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">
+      $f_{\text{cut} \mkern 2mu k}^\text{ext}$
+    </td>
+    <td>частота среза демодулятора</td>
+  </tr>
+  <tr>
+    <td style="text-align: right;">
+      $f_{\text{stop1} \mkern 2mu k}^{\prime\,\text{ext}}$,
+      $f_{\text{stop2} \mkern 2mu k}^{\prime\,\text{ext}}$,<br>
+      $f_{\text{pass1} \mkern 2mu k}^{\prime\,\text{ext}}$,
+      $f_{\text{pass2} \mkern 2mu k}^{\prime\,\text{ext}}$
+    </td>
+    <td>частоты левой и правой границ полосы задерживания и левой и правой границ полосы пропускания соответственно полосового фильтра выделителя *демодулированного сигнала* $k$-го канала </td>
   </tr>
 </table>
 
@@ -93,10 +119,6 @@
 - $f_k$ — случайная величина; $\Omega_{f_k} = [f_\text{min}\ldots f_\text{max},\ \Delta f]$
 - $\xi = 2^3$
 - $f_\text{d} = 2^{\left\lceil \mathop{\mathrm{lb}} \left(\xi \cdot f_{\text{m} \mkern 2mu n}\right) \right\rceil} = 1\,048\,576\ \text{Hz}$<br>Таким образом $f_\text{d}$ равна ближайшей (в большую сторону) степени двойки, такой, что на период модулированного сигнала с наибольшей модулирующей частотой приходится $\xi$ отсчётов.
-- $f_{\text{pass} 1 \mkern 2mu k} = f_{\text{m} \mkern 2mu k} - 0.5 \cdot \Delta f$
-- $f_{\text{pass} 2 \mkern 2mu k} = f_{\text{m} \mkern 2mu k} + 0.5 \cdot \Delta f$
-- $f_{\text{stop} 1 \mkern 2mu k} = f_{\text{pass} 1 \mkern 2mu k} - 0.5 \cdot \Delta f$
-- $f_{\text{stop} 2 \mkern 2mu k} = f_{\text{pass} 2 \mkern 2mu k} + 0.5 \cdot \Delta f$
 
 #### Модель $k$-го канала
 
@@ -107,34 +129,49 @@
   </figcaption>
 </figure>
 
+Если суммировать непреобразованные входные канальные сигналы, их частотные спектры могут налагаться друг на друга, поэтому выделение сигнала определённого канала может быть затруднительным.
+С помощью модуляции каждому каналу ставится в соответствие свой уникальный диапазон частот, в котором может находиться входной сигнал.
+
 <table class="columns">
-<tr valign="bottom">
-  <td>
+<tr valign="top">
+  <td style="width: 55%;">
     <figure>
-      <img src="images/channel_time_diagrams.png">
+      <img src="images/modulated_signal.png">
       <figcaption>
-        Временные диаграммы канального сигнала
+        Канальный сигнал на входе и после модуляции
       </figcaption>
     </figure>
   </td>
   <td>
     <figure>
-      <img src="images/channel_freq_diagrams.png">
+      <img src="images/modulated_signal_freq_diagram.png">
       <figcaption>
-        Частотные диаграммы канального сигнала
+        Частотная диаграмма канального сигнала после модуляции
       </figcaption>
     </figure>
   </td>
 </tr>
 </table>
 
-Зачем модулировать входной сигнал?
+После модуляции на частотной диаграмме наблюдаем 3 пика: центральный соответствует частоте $f_{\text{c} \mkern 2mu k}$, два крайних — частотам $f_{\text{c} \mkern 2mu k} \pm f_k$ соответственно.
 
-TODO
+Целесообразно преобразовать модулированный сигнал так, чтобы наблюдать на частотной диаграмме только один пик.
+Этого мы можем достичь с помощью полосового фильтра.
 
-Зачем фильтровать модулированный сигнал?
+Оставим крайний правый пик, соответствующей частоте $f_{\text{m} \mkern 2mu k}$.
+Соответственно, частоты пропускания и задерживания полосового фильтра могут быть следующими:
 
-TODO
+- $f_{\text{pass} 1 \mkern 2mu k} = f_{\text{m} \mkern 2mu k} - .2 f_k$
+- $f_{\text{pass} 2 \mkern 2mu k} = f_{\text{m} \mkern 2mu k} + .2 f_k$
+- $f_{\text{stop} 1 \mkern 2mu k} = f_{\text{pass} 1 \mkern 2mu k} - .2 f_k$
+- $f_{\text{stop} 2 \mkern 2mu k} = f_{\text{pass} 2 \mkern 2mu k} + .2 f_k$
+
+<figure style="width: 50%;">
+  <img src="images/modulating_freq_filtered_signal_freq_diagram.png">
+  <figcaption>
+    Частотные диаграммы до и после фильтрации модулированного сигнала по частоте $f_{\text{m} \mkern 2mu k}$
+  </figcaption>
+</figure>
 
 #### Групповой сигнал
 
@@ -154,6 +191,78 @@ TODO
   </figcaption>
 </figure>
 
+С помощью полосового фильтра выделим частотный диапазон $k$-го канала:
 
+- $f_{\text{stop1} \mkern 2mu k}^\text{ext} = f_{\text{c} \mkern 2mu k}$
+- $f_{\text{pass1} \mkern 2mu k}^\text{ext} = f_{\text{stop1} \mkern 2mu k}^\text{ext} + f_\text{min}$
+- $f_{\text{pass2} \mkern 2mu k}^\text{ext} = f_{\text{stop1} \mkern 2mu k}^\text{ext} + f_\text{max}$
+- $f_{\text{stop2} \mkern 2mu k}^\text{ext} = f_{\text{c} \mkern 2mu (k + 1)}$
+
+<figure style="width: 50%;">
+  <img src="images/extracted_modulating_freq_filtered_signal_freq_diagram.png">
+  <figcaption>
+    Частотная диаграмма выделенного модулированного сигнала, фильтрованного по $f_{\text{m} \mkern 2mu k}$ 
+  </figcaption>
+</figure>
+
+Затем с помощью демодулятора выделим ту часть сигнала, которая содержит информацию:
+
+- $f_{\text{c} \mkern 2mu k}^\text{ext} = f_{\text{c} \mkern 2mu k}$
+- $f_{\text{cut} \mkern 2mu k}^\text{ext} = 2 f_\text{max}$
+
+<figure style="width: 50%;">
+  <img src="images/extracted_almost_demodulated_signal_freq_diagram.png">
+  <figcaption>
+    Частотная диаграмма выделенного сигнала после демодулятора
+  </figcaption>
+</figure>
+
+В результате демодуляции наблюдаем на частотной диаграмме два пика: первый соответствует частоте $f_k^\text{ext}$, второй — частоте $f_k^\text{ext} + 2 f_{\text{c} \mkern 2mu k}^\text{ext}$.
+
+С помощью полосового фильтра выделим полезную частоту $f_k^\text{ext}$:
+
+- $f_{\text{stop1} \mkern 2mu k}^{\prime\,\text{ext}} = f_\text{min} - \Delta f$
+- $f_{\text{pass1} \mkern 2mu k}^{\prime\,\text{ext}}= f_\text{min}$
+- $f_{\text{pass2} \mkern 2mu k}^{\prime\,\text{ext}} = f_\text{max}$
+- $f_{\text{stop2} \mkern 2mu k}^{\prime\,\text{ext}} = f_\text{max} + \Delta f$
+
+<figure style="width: 50%;">
+  <img src="images/extracted_demodulated_signal_freq_diagram.png">
+  <figcaption>
+    Частотная диаграмма выходного сигнала (после демодуляции и дополнительной фильтрации)
+  </figcaption>
+</figure>
+
+#### Сравнение входного и выходного сигналов
+
+<table class="columns">
+<tr valign="center">
+  <td style="width: 47%;">
+    <figure>
+      <img src="images/input_and_output_signals_freq_diagrams.png">
+      <figcaption>
+        Частотные диаграммы входного и выходного сигналов
+      </figcaption>
+    </figure>
+  </td>
+  <td>
+    <figure>
+      <img src="images/input_and_output_signals.png">
+      <figcaption>
+        Входной и выходной сигналы
+      </figcaption>
+    </figure>
+  </td>
+</tr>
+</table>
+
+На частотной и временной диаграммах наблюдаем:
+
+- $f_k = f_k^\text{ext}$ — частоты входного и выходного сигналов совпадают
+
+Только на временной диаграмме наблюдаем:
+
+- амплитуда выходного сигнала в 2 раза меньше амплитуды входного сигнала
+- входной и выходной сигналы (могут быть) смещены по фазе друг относительно друга
 
 {% endblock %}

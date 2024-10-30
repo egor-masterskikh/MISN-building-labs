@@ -1,9 +1,10 @@
 clear;
 clc;
 
-global model_name total_channels fc_1 delta_fc fc_seq f_max f_min delta_f f_seq fm_seq ampl fd;
+global model_name total_channels fc_1 delta_fc f_min f_max delta_f fm_seq f_seq;
 
 model_name = "lab4";
+
 total_channels = 12;  % количество каналов первичной группы
 fc_1 = 64e3;  % несущая частота первого канала
 delta_fc = 4e3;  % шаг между несущими частотами соседних каналов
@@ -28,3 +29,7 @@ mw.fd = fd;
 mw.ampl = ampl;
 mw.delta_f = delta_f;
 mw.delta_fc = delta_fc;
+mw.f_min = f_min;
+mw.f_max = f_max;
+
+clear mw;

@@ -24,30 +24,23 @@ classdef funs
         % частота левой границы полосы пропускания полосового фильтра
         function f_pass1 = f_pass1_(k)
             global fm_seq f_seq;
-            f_pass1 = fm_seq(k) - f_seq(k) / 3;
+            f_pass1 = fm_seq(k) - f_seq(k) / 5;
         end
 
         function f_pass2 = f_pass2_(k)
             global fm_seq f_seq;
-            f_pass2 = fm_seq(k) + f_seq(k) / 3;
+            f_pass2 = fm_seq(k) + f_seq(k) / 5;
         end
 
         % частота левой границы полосы задерживания полосового фильтра
         function f_stop1 = f_stop1_(k)
             global f_seq;
-            f_stop1 = funs.f_pass1_(k) - f_seq(k) / 3;
+            f_stop1 = funs.f_pass1_(k) - f_seq(k) / 5;
         end
 
         function f_stop2 = f_stop2_(k)
             global f_seq;
-            f_stop2 = funs.f_pass2_(k) + f_seq(k) / 3;
-        end
-
-        function freqs = individual_signal_extractor_filter_freqs_(k)
-            % использование функций f_pass или f_stop подразумевает, что
-            % частота сигнала известа. Но в выделителе сигнала она не может
-            % быть известна, поэтому нужно переписать тело функции
-            freqs = [funs.f_stop1_(k) funs.f_pass1_(k) funs.f_pass2_(k) funs.f_stop2_(k)];
+            f_stop2 = funs.f_pass2_(k) + f_seq(k) / 5;
         end
     end
 end
