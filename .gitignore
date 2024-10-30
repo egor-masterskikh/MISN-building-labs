@@ -4,5 +4,6 @@ venv
 
 **/slprj/
 **/*.slx*
+**/*.asv
 **/*.html
 **/*.pdf
