@@ -7,14 +7,10 @@ env = Environment(
     autoescape=select_autoescape()
 )
 
-paths = (
-    'lab1/lab1.md',
-    'lab2/lab2.md',
-    'lab3/lab3.md',
-    'lab4/lab4.md'
-)
+labs_to_render_count = 4
 
-for path in paths:
+for i in range(labs_to_render_count):
+    path = f'lab{i}/report.md'
     template = env.get_template(path)
     pypandoc.convert_text(
         source=template.render(), format='md',
