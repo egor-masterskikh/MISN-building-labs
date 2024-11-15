@@ -1,94 +1,258 @@
-# Отчёт по ЛР №2 (на лабораторной установке)
+{% extends 'base.md' %}
+
+{% block lab_num %}
+  2<br>
+  на лабораторной установке
+{% endblock %}
+
+{% block lab_title %}
+  Исследование процессов коммутации и оценка помехоустойчивости систем связи с временным уплотнением каналов, использующих сигналы с АИМ и ИКМ
+{% endblock %}
+
+{% block body %}
+
+### Цели работы
+
+- изучить принципы работы мультиплексора и демультиплексора
+- исследовать работу мультиплексора и демультиплексора при временном уплотнении линии связи АИМ- и ИКМ- сигналами
+- качественно оценить помехоустойчивость систем связи с АИМ и
+ИКМ
 
 ## Исследовать процесс формирования группового сигнала в системе связи с АИМ
 
-![[PAM/schemes/channel.svg|360]]
-схема канала в системе связи с АИМ
+<figure style="width: 62%;">
+  <img src="../images/PAM/schemes/channel.svg" alt="">
+  <figcaption>
+    схема канала в системе связи с АИМ
+  </figcaption>
+</figure>
 
-![[PAM/input_signal_1_and_strobing_pulses.jpg|360]]
-входной сигнал №1 и стробирующие импульсы
+<table class="columns">
+<tr valign="top">
+  <td>
+    <figure>
+      <img src="../images/PAM/input_signal_1_and_strobing_pulses.jpg">
+      <figcaption>
+        входной сигнал №1 и стробирующие импульсы
+      </figcaption>
+    </figure>
+  </td>
+  <td style="width: 51%;">
+    <figure>
+      <img src="../images/PAM/PAM_signal_1.jpg">
+      <figcaption>
+        АИМ сигнала №1
+      </figcaption>
+    </figure>
+  </td>
+</tr>
+</table>
 
-![[PAM/PAM_signal_1.jpg|360]]
-АИМ сигнала №1
+<table class="columns">
+<tr valign="top">
+  <td>
+    <figure>
+      <img src="../images/PAM/input_signal_2_and_strobing_pulses.jpg" alt="">
+      <figcaption>
+        входной сигнал №2 и стробирующие импульсы
+      </figcaption>
+    </figure>
+  </td>
+  <td style="width: 51%;">
+    <figure>
+      <img src="../images/PAM/PAM_signal_2.jpg">
+      <figcaption>
+        АИМ сигнала №2
+      </figcaption>
+    </figure>
+  </td>
+</tr>
+</table>
 
-![[PAM/input_signal_2_and_strobing_pulses.jpg|360]]
-входной сигнал №2 и стробирующие импульсы
+<table class="columns">
+<tr valign="top">
+  <td>
+    <figure>
+      <img src="../images/PAM/input_signal_3_and_strobing_pulses.jpg" alt="">
+      <figcaption>
+        входной сигнал №3 и стробирующие импульсы
+      </figcaption>
+    </figure>
+  </td>
+  <td style="width: 51%;">
+    <figure>
+      <img src="../images/PAM/PAM_signal_3.jpg">
+      <figcaption>
+        АИМ сигнала №3
+      </figcaption>
+    </figure>
+  </td>
+</tr>
+</table>
 
-![[PAM/PAM_signal_2.jpg|360]]
-АИМ сигнала №2
+<figure style="width: 62%;">
+  <img src="../images/PAM/schemes/transmitter.svg" alt="">
+  <figcaption>
+    схема формирования группового сигнала
+  </figcaption>
+</figure>
 
-![[PAM/input_signal_3_and_strobing_pulses.jpg|360]]
-входной сигнал №3 и стробирующие импульсы
-
-![[PAM/PAM_signal_3.jpg|360]]
-АИМ сигнала №3
-
-![[PAM/schemes/transmitter.svg|320]]
-схема формирования группового сигнала
-
-![[PAM/input_group_signal.jpg|360]]
-групповой АИМ-сигнал на выходе мультиплексора
+<figure style="width: 62%;">
+  <img src="../images/PAM/input_group_signal.jpg" alt="">
+  <figcaption>
+    групповой АИМ-сигнал на выходе мультиплексора
+  </figcaption>
+</figure>
 
 ## Исследовать процесс разделения каналов в системе связи с АИМ
 
-![[PAM/schemes/receiver.svg|360]]
-схема разделения каналов в системе связи с АИМ
+<figure style="width: 62%;">
+  <img src="../images/PAM/schemes/receiver.svg" alt="">
+  <figcaption>
+    схема разделения каналов в системе связи с АИМ
+  </figcaption>
+</figure>
 
-![[PAM/output_group_signal.jpg|360]]
-групповой АИМ-сигнал на входе демультиплексора
+<figure style="width: 62%;">
+  <img src="../images/PAM/output_group_signal.jpg" alt="">
+  <figcaption>
+    групповой АИМ-сигнал на входе демультиплексора
+  </figcaption>
+</figure>
 
-![[PAM/output_signal_1.jpg|360]]
-выходной сигнал №1 в системе связи с АИМ
+<figure style="width: 62%;">
+  <img src="../images/PAM/output_signal_1.jpg" alt="">
+  <figcaption>
+    выходной сигнал №1 в системе связи с АИМ
+  </figcaption>
+</figure>
 
-![[PAM/output_signal_2.jpg|360]]
-выходной сигнал №2 в системе связи с АИМ
+<figure style="width: 62%;">
+  <img src="../images/PAM/output_signal_2.jpg" alt="">
+  <figcaption>
+    выходной сигнал №2 в системе связи с АИМ
+  </figcaption>
+</figure>
 
-![[PAM/output_signal_3.jpg|360]]
-выходной сигнал №3 в системе связи с АИМ
+<figure style="width: 62%;">
+  <img src="../images/PAM/output_signal_3.jpg" alt="">
+  <figcaption>
+    выходной сигнал №3 в системе связи с АИМ
+  </figcaption>
+</figure>
 
 ## Оценить помехоустойчивость системы связи с АИМ
 
-![[PAM/schemes/noise_impact.svg|360]]
-схема анализа влияния шума на групповой сигнал в системе связи с АИМ
+<figure style="width: 62%;">
+  <img src="../images/PAM/schemes/noise_impact.svg" alt="">
+  <figcaption>
+    схема анализа влияния шума на групповой сигнал в системе связи с АИМ
+  </figcaption>
+</figure>
 
-![[PAM/input_and_output_group_signal_with_noise.jpg|360]]
-групповой сигнал до и после воздействия шума в системе связи с АИМ
+<figure style="width: 62%;">
+  <img src="../images/PAM/input_and_output_group_signal_with_noise.jpg" alt="">
+  <figcaption>
+    групповой сигнал до и после воздействия шума в системе связи с АИМ
+  </figcaption>
+</figure>
 
-![[PAM/schemes/input_and_output_signal.svg|580]]
-схема анализа соответствующих входного и выходного сигналов в системе связи с АИМ
+<figure>
+  <img src="../images/PAM/schemes/input_and_output_signal.svg" alt="">
+  <figcaption>
+    схема анализа соответствующих входного и выходного сигналов в системе связи с АИМ
+  </figcaption>
+</figure>
 
-![[PAM/input_and_output_signal_1.jpg|360]]
-входной и выходной сигнал №1 в системе связи с АИМ
+<figure style="width: 62%;">
+  <img src="../images/PAM/input_and_output_signal_1.jpg" alt="">
+  <figcaption>
+    входной и выходной сигнал №1 в системе связи с АИМ
+  </figcaption>
+</figure>
 
 ## Исследовать процесс формирования группового сигнала в системе связи с ИКМ
 
-![[PCM/schemes/channel.svg|360]]
-схема канала в системе связи с ИКМ
+<figure style="width: 62%;">
+  <img src="../images/PCM/schemes/channel.svg" alt="">
+  <figcaption>
+    схема канала в системе связи с ИКМ
+  </figcaption>
+</figure>
 
-![[PCM/PCM_signal_1_and_strobing_pulses.jpg|360]]
-ИКМ сигнала №1 и соответствующие стробирующие импульсы
+<figure style="width: 62%;">
+  <img src="../images/PCM/PCM_signal_1_and_strobing_pulses.jpg" alt="">
+  <figcaption>
+    ИКМ сигнала №1 и соответствующие стробирующие импульсы
+  </figcaption>
+</figure>
 
-![[PCM/schemes/input_and_output_signal.svg|580]]
-схема анализа соответствующих входного и выходного сигналов в системе связи с ИКМ
+<figure>
+  <img src="../images/PCM/schemes/input_and_output_signal.svg" alt="">
+  <figcaption>
+    схема анализа соответствующих входного и выходного сигналов в системе связи с ИКМ
+  </figcaption>
+</figure>
 
-![[PCM/input_and_output_signal_1.jpg|360]]
-входной и выходной сигнал №1 в системе связи с ИКМ
+<figure style="width: 62%;">
+  <img src="../images/PCM/input_and_output_signal_1.jpg" alt="">
+  <figcaption>
+    входной и выходной сигнал №1 в системе связи с ИКМ
+  </figcaption>
+</figure>
 
-![[PCM/input_and_output_signal_2.jpg|360]]
-входной и выходной сигнал №2 в системе связи с ИКМ
+<figure style="width: 62%;">
+  <img src="../images/PCM/input_and_output_signal_2.jpg" alt="">
+  <figcaption>
+    входной и выходной сигнал №2 в системе связи с ИКМ
+  </figcaption>
+</figure>
 
-![[PCM/input_and_output_signal_3.jpg|360]]
-входной и выходной сигнал №3 в системе связи с ИКМ
+<figure style="width: 62%;">
+  <img src="../images/PCM/input_and_output_signal_3.jpg" alt="">
+  <figcaption>
+    входной и выходной сигнал №3 в системе связи с ИКМ
+  </figcaption>
+</figure>
+
+<div class="nobreak">
+
 ## Оценить помехоустойчивость системы связи с ИКМ
 
-![[PCM/schemes/noise_impact.svg|580]]
-схема анализа группового сигнала до и после воздействия шума в системе связи с ИКМ
+<figure style="width: 75%;">
+  <img src="../images/PCM/schemes/noise_impact.svg" alt="">
+  <figcaption>
+    схема анализа группового сигнала до и после воздействия шума в системе связи с ИКМ
+  </figcaption>
+</figure>
 
-![[PCM/group_signal_before_and_after_noise.jpg|360]]
-групповой сигнал до и после воздействия шума в системе связи с ИКМ
+</div>
 
-![[PCM/schemes/noise_impact_with_threshold_device.svg|580]]
-схема анализа группового сигнала до воздействия шума и после прохождения через пороговое устройство
+<figure style="width: 62%;">
+  <img src="../images/PCM/group_signal_before_and_after_noise.jpg" alt="">
+  <figcaption>
+    групповой сигнал до и после воздействия шума в системе связи с ИКМ
+  </figcaption>
+</figure>
 
-![[PCM/group_signal_before_noise_and_after_threshold_device.jpg|360]]
-групповой сигнал до воздействия шума и после прохождения через пороговое устройство
+<figure style="width: 75%;">
+  <img src="../images/PCM/schemes/noise_impact_with_threshold_device.svg" alt="">
+  <figcaption>
+    схема анализа группового сигнала до воздействия шума и после прохождения через пороговое устройство
+  </figcaption>
+</figure>
+
+<figure style="width: 62%;">
+  <img src="../images/PCM/group_signal_before_noise_and_after_threshold_device.jpg" alt="">
+  <figcaption>
+    групповой сигнал до воздействия шума и после прохождения через пороговое устройство
+  </figcaption>
+</figure>
+
+## Выводы
+
+- изучили принципы построения устройств, позволяющих осуществлять временное уплотнение каналов связи
+- исследовать работу мультиплексора и демультиплексора при временном уплотнении линии связи АИМ- и ИКМ- сигналами
+- использование ИКМ и порогового устройства обеспечило бóльшую помехоустойчивость по сравнению с АИМ в представленной системе связи
+
+{% endblock %}
