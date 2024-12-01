@@ -90,6 +90,8 @@
 </tr>
 </table>
 
+<div class="nobreak">
+
 <figure style="width: 62%;">
   <img src="../images/PAM/schemes/transmitter.svg" alt="">
   <figcaption>
@@ -103,6 +105,10 @@
     групповой АИМ-сигнал на выходе мультиплексора
   </figcaption>
 </figure>
+
+</div>
+
+<div class="nobreak">
 
 ## Исследовать процесс разделения каналов в системе связи с АИМ
 
@@ -119,6 +125,8 @@
     групповой АИМ-сигнал на входе демультиплексора
   </figcaption>
 </figure>
+
+</div>
 
 <figure style="width: 62%;">
   <img src="../images/PAM/output_signal_1.jpg" alt="">
@@ -141,6 +149,8 @@
   </figcaption>
 </figure>
 
+<div class="nobreak">
+
 ## Оценить помехоустойчивость системы связи с АИМ
 
 <figure style="width: 62%;">
@@ -157,6 +167,10 @@
   </figcaption>
 </figure>
 
+</div>
+
+<div class="nobreak">
+
 <figure>
   <img src="../images/PAM/schemes/input_and_output_signal.svg" alt="">
   <figcaption>
@@ -170,6 +184,10 @@
     входной и выходной сигнал №1 в системе связи с АИМ
   </figcaption>
 </figure>
+
+</div>
+
+<div class="nobreak">
 
 ## Исследовать процесс формирования группового сигнала в системе связи с ИКМ
 
@@ -186,6 +204,8 @@
     ИКМ сигнала №1 и соответствующие стробирующие импульсы
   </figcaption>
 </figure>
+
+</div>
 
 <figure>
   <img src="../images/PCM/schemes/input_and_output_signal.svg" alt="">
@@ -226,14 +246,16 @@
   </figcaption>
 </figure>
 
-</div>
-
 <figure style="width: 62%;">
   <img src="../images/PCM/group_signal_before_and_after_noise.jpg" alt="">
   <figcaption>
     групповой сигнал до и после воздействия шума в системе связи с ИКМ
   </figcaption>
 </figure>
+
+</div>
+
+<div class="nobreak">
 
 <figure style="width: 75%;">
   <img src="../images/PCM/schemes/noise_impact_with_threshold_device.svg" alt="">
@@ -249,10 +271,16 @@
   </figcaption>
 </figure>
 
-## Выводы
+</div>
+
+<div class="nobreak">
+
+## Итоги
 
 - изучили принципы построения устройств, позволяющих осуществлять временное уплотнение каналов связи
 - исследовать работу мультиплексора и демультиплексора при временном уплотнении линии связи АИМ- и ИКМ- сигналами
-- использование ИКМ и порогового устройства обеспечило бóльшую помехоустойчивость по сравнению с АИМ в представленной системе связи
+- выяснили, что использование ИКМ и порогового устройства обеспечило бóльшую помехоустойчивость по сравнению с АИМ в представленной системе связи
+
+</div>
 
 {% endblock %}
