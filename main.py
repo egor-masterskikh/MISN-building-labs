@@ -10,7 +10,10 @@ env = Environment(
 
 
 def fixed_precision(num, precision):
-    return format(num, f'.{precision}f')
+    try:
+        return format(float(num), f'.{precision}f')
+    except ValueError:
+        return num
 
 
 env.filters['fixed_precision'] = fixed_precision
