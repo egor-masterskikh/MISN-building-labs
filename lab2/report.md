@@ -35,7 +35,7 @@ $2^q = 2A \Longrightarrow A = 2^{q - 1}$
 ### Построение ИКМ синусоидального сигнала
 
 <figure style="width: 70%;">
-  <img src="images/task1/task1.svg" alt="">
+  <img src="../images/task1/task1.svg" alt="">
   <figcaption>
     Схема блоков для анализа ИКМ синусоидального сигнала
   </figcaption>
@@ -63,7 +63,7 @@ $2^q = 2A \Longrightarrow A = 2^{q - 1}$
 ### Анализ ИКМ синусоидального сигнала
 
 <figure style="width: 60%;">
-  <img src="images/task1/task1_time.png" alt="">
+  <img src="../images/task1/task1_time.png" alt="">
   <figcaption>
     Временная диаграмма дискретного и квантованного сигналов, их аналогового прототипа и ошибки квантования
   </figcaption>
@@ -92,7 +92,7 @@ $A = 2^{q - 1}$
 ### Модель
 
 <figure>
-  <img src="images/task2/task2_scheme.svg">
+  <img src="../images/task2/task2_scheme.svg">
   <figcaption>
     Схема блоков для анализа канала связи
   </figcaption>
@@ -147,7 +147,7 @@ $k = \dfrac{A}{\sqrt{P_\mathrm{w}}}$,
 <tr>
   <td>
     <figure>
-      <img src="images/task2/task2_min_noise.png" alt="">
+      <img src="../images/task2/task2_min_noise.png" alt="">
       <figcaption>
         Временная диаграмма канала связи при $k = 200$, — минимальный уровень шума
       </figcaption>
@@ -155,7 +155,7 @@ $k = \dfrac{A}{\sqrt{P_\mathrm{w}}}$,
   </td>
   <td style="width: 51%;">
     <figure>
-      <img src="images/task2/task2_mid_noise.png" alt="">
+      <img src="../images/task2/task2_mid_noise.png" alt="">
       <figcaption>
         Временная диаграмма канала связи при $k = 50$, — средний уровень шума
       </figcaption>
@@ -165,7 +165,7 @@ $k = \dfrac{A}{\sqrt{P_\mathrm{w}}}$,
 <tr>
   <td colspan="2">
     <figure style="width: 50%;">
-      <img src="images/task2/task2_max_noise.png" alt="">
+      <img src="../images/task2/task2_max_noise.png" alt="">
       <figcaption>
         Временная диаграмма канала связи при $k = 20$, — максимальный уровень шума
       </figcaption>

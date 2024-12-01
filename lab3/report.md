@@ -37,7 +37,7 @@
 ### Модель
 
 <figure style="width: 90%;">
-  <img src="images/time_scheme.svg" alt="">
+  <img src="../images/time_scheme.svg" alt="">
   <figcaption>
     Модель двухканальной системы связи ИКМ
   </figcaption>
@@ -77,7 +77,7 @@
 <tr valign="top">
   <td>
     <figure>
-      <img src="images/SNR10_time.png" alt="">
+      <img src="../images/SNR10_time.png" alt="">
       <figcaption>
         Временная диаграмма канальных сигналов при $\text{SNR} = 10$, — минимальный шум
       </figcaption>
@@ -85,7 +85,7 @@
   </td>
   <td>
     <figure>
-      <img src="images/SNR5_time.png" alt="">
+      <img src="../images/SNR5_time.png" alt="">
       <figcaption>
         Временная диаграмма канальных сигналов при $\text{SNR} = 5$, — средний уровень шума
       </figcaption>
@@ -95,7 +95,7 @@
 <tr>
   <td colspan="2">
     <figure style="width: 50%;">
-      <img src="images/SNR2_time.png" alt="">
+      <img src="../images/SNR2_time.png" alt="">
       <figcaption>
         Временная диаграмма канальных сигналов при $\text{SNR} = 2$, — максимальный шум
       </figcaption>
@@ -111,7 +111,7 @@
 ## Задание 3. Исследовать характеристики модели системы связи в частотной области
 
 <figure>
-  <img src="images/freq_scheme.svg" alt="">
+  <img src="../images/freq_scheme.svg" alt="">
   <figcaption>
     Схема исследования модели системы связи в частотной области
   </figcaption>
@@ -123,7 +123,7 @@
 <tr valign="top">
   <td>
     <figure>
-      <img src="images/SNR10_freq.png" alt="">
+      <img src="../images/SNR10_freq.png" alt="">
       <figcaption>
         Частотная диаграмма канальных сигналов при $\text{SNR} = 10$
       </figcaption>
@@ -131,7 +131,7 @@
   </td>
   <td>
     <figure>
-      <img src="images/SNR5_freq.png" alt="">
+      <img src="../images/SNR5_freq.png" alt="">
       <figcaption>
         Частотная диаграмма канальных сигналов при $\text{SNR} = 5$
       </figcaption>
@@ -141,7 +141,7 @@
 <tr>
   <td colspan="2">
     <figure style="width: 50%;">
-      <img src="images/SNR2_freq.png" alt="">
+      <img src="../images/SNR2_freq.png" alt="">
       <figcaption>
         Частотная диаграмма канальных сигналов при $\text{SNR} = 2$
       </figcaption>

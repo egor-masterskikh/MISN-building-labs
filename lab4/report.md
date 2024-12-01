@@ -108,7 +108,7 @@
 ### Решение
 
 <figure style="width: 80%;">
-  <img src="images/general_scheme.svg">
+  <img src="../images/general_scheme.svg">
   <figcaption>
     Модель выделения индивидуального сигнала из первичной группы
   </figcaption>
@@ -127,7 +127,7 @@
 #### Модель $k$-го канала
 
 <figure style="width: 80%;">
-  <img src="images/single_channel_scheme.svg">
+  <img src="../images/single_channel_scheme.svg">
   <figcaption>
     Модель одного канала
   </figcaption>
@@ -140,7 +140,7 @@
 <tr valign="top">
   <td style="width: 55%;">
     <figure>
-      <img src="images/modulated_signal.png">
+      <img src="../images/modulated_signal.png">
       <figcaption>
         Канальный сигнал на входе и после модуляции
       </figcaption>
@@ -148,7 +148,7 @@
   </td>
   <td>
     <figure>
-      <img src="images/modulated_signal_freq_diagram.png">
+      <img src="../images/modulated_signal_freq_diagram.png">
       <figcaption>
         Частотная диаграмма канального сигнала после модуляции
       </figcaption>
@@ -171,7 +171,7 @@
 - $f_{\text{stop} 2 \mkern 2mu k} = f_{\text{pass} 2 \mkern 2mu k} + .2 f_k$
 
 <figure style="width: 50%;">
-  <img src="images/modulating_freq_filtered_signal_freq_diagram.png">
+  <img src="../images/modulating_freq_filtered_signal_freq_diagram.png">
   <figcaption>
     Частотные диаграммы до и после фильтрации модулированного сигнала по частоте $f_{\text{m} \mkern 2mu k}$
   </figcaption>
@@ -180,7 +180,7 @@
 #### Групповой сигнал
 
 <figure style="width: 80%;">
-  <img src="images/group_freq_diagram.png">
+  <img src="../images/group_freq_diagram.png">
   <figcaption>
     Частотная диаграмма группового сигнала
   </figcaption>
@@ -191,7 +191,7 @@
 #### Модель выделителя индивидуального сигнала
 
 <figure>
-  <img src="images/individual_signal_extractor_scheme.svg">
+  <img src="../images/individual_signal_extractor_scheme.svg">
   <figcaption>
     Модель выделителя индивидуального сигнала
   </figcaption>
@@ -207,7 +207,7 @@
 - $f_{\text{stop2} \mkern 2mu k}^\text{ext} = f_{\text{c} \mkern 2mu (k + 1)}$
 
 <figure style="width: 50%;">
-  <img src="images/extracted_modulating_freq_filtered_signal_freq_diagram.png">
+  <img src="../images/extracted_modulating_freq_filtered_signal_freq_diagram.png">
   <figcaption>
     Частотная диаграмма выделенного модулированного сигнала, фильтрованного по $f_{\text{m} \mkern 2mu k}$ 
   </figcaption>
@@ -219,7 +219,7 @@
 - $f_{\text{cut} \mkern 2mu k}^\text{ext} = 2 f_\text{max}$
 
 <figure style="width: 50%;">
-  <img src="images/extracted_almost_demodulated_signal_freq_diagram.png">
+  <img src="../images/extracted_almost_demodulated_signal_freq_diagram.png">
   <figcaption>
     Частотная диаграмма выделенного сигнала после демодулятора
   </figcaption>
@@ -235,7 +235,7 @@
 - $f_{\text{stop2} \mkern 2mu k}^{\prime\,\text{ext}} = f_\text{max} + \Delta f$
 
 <figure style="width: 50%;">
-  <img src="images/extracted_demodulated_signal_freq_diagram.png">
+  <img src="../images/extracted_demodulated_signal_freq_diagram.png">
   <figcaption>
     Частотная диаграмма выходного сигнала (после демодуляции и дополнительной фильтрации)
   </figcaption>
@@ -249,7 +249,7 @@
 <tr valign="center">
   <td style="width: 47%;">
     <figure>
-      <img src="images/input_and_output_signals_freq_diagrams.png">
+      <img src="../images/input_and_output_signals_freq_diagrams.png">
       <figcaption>
         Частотные диаграммы входного и выходного сигналов
       </figcaption>
@@ -257,7 +257,7 @@
   </td>
   <td>
     <figure>
-      <img src="images/input_and_output_signals.png">
+      <img src="../images/input_and_output_signals.png">
       <figcaption>
         Входной и выходной сигналы
       </figcaption>
