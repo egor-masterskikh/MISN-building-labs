@@ -84,3 +84,7 @@ figcaption {
 #title-block-header {
     display: none;
 }
+
+th {
+    font-weight: normal;
+}
