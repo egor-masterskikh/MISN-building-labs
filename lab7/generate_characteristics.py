@@ -9,7 +9,6 @@ def generate_characteristic(direct_measurement_filename):
         direct_measurement = csv.reader(direct_measurement_file, delimiter=';')
         header_row = next(direct_measurement)
         direct_measurement = tuple(direct_measurement)
-        rows_num = len(direct_measurement)
 
         # -- добавить столбец in_segment_step
         characteristic = []
@@ -20,7 +19,7 @@ def generate_characteristic(direct_measurement_filename):
             except ValueError:
                 input_voltage = 0
 
-            if i in (0, int(rows_num / 2)):
+            if i == 0:
                 in_segment_step = ''
             else:
                 in_segment_step = round((input_voltage_prev - input_voltage) / 16 * 1e3, 5)
