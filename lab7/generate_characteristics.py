@@ -22,7 +22,7 @@ def generate_characteristic(direct_measurement_filename):
             if i == 0:
                 in_segment_step = ''
             else:
-                in_segment_step = round((input_voltage_prev - input_voltage) / 16 * 1e3, 5)
+                in_segment_step = round((input_voltage - input_voltage_prev) / 16 * 1e3, 5)
 
             characteristic.append((output_code, input_voltage, in_segment_step))
             input_voltage_prev = input_voltage

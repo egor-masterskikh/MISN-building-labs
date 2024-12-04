@@ -103,7 +103,7 @@
 
 </div>
 
-<figure style="width: 100%;">
+<figure style="width: 85%;">
   <img src="../images/coder_characteristic.svg">
   <figcaption>
     Передаточная характеристика кодера
@@ -116,10 +116,10 @@
 
 | Входной код декодера | Напряжение на<br>выходе декодера, В | Шаг внутри<br>сегмента, мВ |
 | :-- | --: | --: |
-{% for output_code, input_voltage, in_segment_step in decoder_characteristic[1:] %}| {{ output_code }} | {{ input_voltage | fixed_precision(2) }} | {{ in_segment_step | fixed_precision(3) }} |
+{% for output_code, input_voltage, in_segment_step in decoder_characteristic[1:] %}| {{ output_code }} | {{ input_voltage | fixed_precision(3) }} | {{ in_segment_step | fixed_precision(3) }} |
 {% endfor %}
 
-<figure style="width: 100%;">
+<figure style="width: 85%;">
   <img src="../images/decoder_characteristic.svg">
   <figcaption>
     Передаточная характеристика декодера

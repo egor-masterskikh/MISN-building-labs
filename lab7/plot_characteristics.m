@@ -36,12 +36,15 @@ subplot(2, 1, 1);
 plot(coder_input_voltage.x, coder_input_voltage.y, 'ob');
 hold on;
 plot(coder_input_voltage.xx, coder_input_voltage.yy, 'Color', '#eb6f40');
+grid on;
 ylabel('Input Voltage, V');
+set(gca, 'xticklabel', []);
 
 subplot(2, 1, 2);
 plot(coder_in_segment_step.x, coder_in_segment_step.y, 'ob');
 hold on;
 plot(coder_in_segment_step.xx, coder_in_segment_step.yy, 'Color', '#eb6f40');
+grid on;
 xlabel('Input Code Index');
 ylabel('Step in Segment, mV');
 
@@ -62,11 +65,14 @@ subplot(2, 1, 1);
 plot(decoder_input_voltage.x, decoder_input_voltage.y, 'ob');
 hold on;
 plot(decoder_input_voltage.xx, decoder_input_voltage.yy, 'Color', '#34a853');
+grid on;
 ylabel('Input Voltage, V');
+set(gca, 'xticklabel', []);
 
 subplot(2, 1, 2);
 plot(decoder_in_segment_step.x, decoder_in_segment_step.y, 'ob');
 hold on;
 plot(decoder_in_segment_step.xx, decoder_in_segment_step.yy, 'Color', '#34a853');
+grid on;
 xlabel('Input Code Index');
 ylabel('Step in Segment, mV');
